@@ -1,8 +1,8 @@
 .board {
-    border: 10px solid #a49e96;
+    border: 8px solid black;
     border-radius: 10px;
     margin: 20px;
-    background: #938d85;
+    background: #A3A7AE;
     display: inline-block;
 }
 

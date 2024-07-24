@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background: #b5afa7 no-repeat 23px 30px;
+  background: #E0E2E4 no-repeat 23px 30px;
   background-size: 380px;
   font-family: sans-serif;
 }
@@ -20,7 +20,7 @@ ul.actions li{
 }
 
 ul.actions a{
-  border: 10px solid #a49e96;
+  border: 8px solid #A3A7AE;
   border-radius: 10px;
   padding: 6px 12px;
   text-decoration: none;
@@ -29,5 +29,5 @@ ul.actions a{
 }
 
 ul.actions a:hover{
-  background: #a49e96;
+  background: #A3A7AE;
 }

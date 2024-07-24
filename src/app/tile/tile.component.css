@@ -10,6 +10,7 @@
   font-size: 20px;
   vertical-align: middle;
   text-align: center;
+  cursor: pointer;
 }
 
 .lid {
@@ -18,12 +19,12 @@
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 2px outset #a49e96;
+  border: 2px outset #A3A7AE;
   background-image:
     radial-gradient(
       circle at top left,
-      #a49e96,
-      #605d59
+      #E0E2E4,
+      #A3A7AE
     );
 }
 
@@ -31,8 +32,8 @@
   background-image:
     radial-gradient(
       circle at bottom right,
-      #a49e96,
-      #605d59
+      #E0E2E4,
+      #A3A7AE
     );
 }
 

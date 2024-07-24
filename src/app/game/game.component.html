@@ -1,0 +1,17 @@
+<div style="text-align: center">
+  <h1>Minesweeper</h1>
+  <classical-board
+    [rowsNumber]="16"
+    [columnsNumber]="16"
+    [minesNumber]="48"
+    (notifyGameStatus)="updateGameStatus($event)"
+    #minesweeper></classical-board>
+  <p *ngIf="result == 'WON'">Tu as gagné en {{playingTime | date:'mm:ss'}}</p>
+  <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
+  <ul class="actions">
+    <li><a (click)="startNewGame()">New game</a></li>
+  </ul>
+  <div class="time" [class.hidden]="result != 'ONGOING'">
+    <timer #timer></timer>
+  </div>
+</div>

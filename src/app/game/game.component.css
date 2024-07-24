@@ -1,0 +1,14 @@
+/*#main {
+  margin: 0 auto 0;
+  width: 800px;
+}*/
+
+.time {
+  background: #736d65;
+  display: inline-block;
+  padding: 6px 10px;
+}
+
+.hidden {
+  visibility: hidden;
+}

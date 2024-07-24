@@ -1,0 +1,6 @@
+<div class="board">
+    <div *ngFor="let row of tiles" class="row">
+        <tile *ngFor="let tile of row" [tile]="tile" (click)="handleTileClick(tile)" (contextmenu)="onRightClick(tile)"></tile>
+    </div>
+</div>
+<p>Vous avez trouvé {{flagsNumber}} sur {{minesNumber}} </p>

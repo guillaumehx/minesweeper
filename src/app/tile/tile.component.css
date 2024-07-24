@@ -42,8 +42,10 @@
 }
 
 .flagged {
-  /*background: url(../images/danger.png); TODO mettre une image bien et changer le background*/
-  background: green;
+  background: url(/assets/images/logo-sfeir.png);
+  background-size:24px;
+  background-repeat:no-repeat;
+  background-position:center;
 }
 
 .mine.flagged {

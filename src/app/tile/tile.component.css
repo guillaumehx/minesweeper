@@ -37,8 +37,9 @@
 }
 
 .mine {
-  /*background: url(../images/danger.png); TODO mettre une image bien et changer le background*/
-  background: red;
+  background-image: url('../../assets/images/mine.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .flagged {

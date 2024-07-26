@@ -1,8 +1,15 @@
+.scene {
+  display: flex;
+  flex-direction: column;
+}
+
 .board {
     border: 8px solid black;
     border-radius: 10px;
-    margin: 20px;
+    margin: 20px auto;
     background: #A3A7AE;
-    display: inline-block;
 }
 
+.row {
+  display: flex;
+}

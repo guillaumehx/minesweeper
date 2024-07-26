@@ -5,7 +5,7 @@
   <classical-board
     [rowsNumber]="16"
     [columnsNumber]="16"
-    [minesNumber]="0"
+    [minesNumber]="48"
     (notifyGameStatus)="updateGameStatus($event)"
     #minesweeper></classical-board>
   <p *ngIf="result == 'WON'">Tu as gagné en {{playingTime | date:'mm:ss'}}</p>

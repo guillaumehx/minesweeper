@@ -30,7 +30,7 @@ export class GameComponent {
     this.timer.clearTimer();
     this.timer.startTimer();
   }
-  
+
   updateGameStatus(status: string) {
     if (status === 'WON' || status === 'GAMEOVER') {
       if (status === 'WON') {
@@ -57,7 +57,7 @@ export class GameComponent {
         return clearInterval(interval);
       }
     
-      const particleCount = 30 * (timeLeft / duration);
+      const particleCount = 20 * (timeLeft / duration);
     
       confetti(
         Object.assign({}, defaults, {

@@ -1,6 +1,6 @@
 <div style="text-align: center">
   <br>
-  <img src="../../assets/images/logo.png">
+  <img class="animate__animated animate__rubberBand" src="../../assets/images/logo.png">
   <br>
   <classical-board
     [rowsNumber]="16"
@@ -11,6 +11,7 @@
   <p *ngIf="result == 'WON'">Tu as gagné en {{playingTime | date:'mm:ss'}}</p>
   <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
   <ul class="actions">
+    <br>
     <li><a (click)="startNewGame()">New game</a></li>
   </ul>
   <div class="time" [class.hidden]="result != 'ONGOING'">

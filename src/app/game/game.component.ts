@@ -3,6 +3,7 @@ import {ClassicalBoardComponent} from "../board/classical-board/classical-board.
 import {DatePipe, NgIf} from "@angular/common";
 import {TimerComponent} from "../timer/timer.component";
 import { confetti } from 'tsparticles-confetti';
+import 'animate.css';
 
 @Component({
   selector: 'game',
@@ -19,21 +20,24 @@ import { confetti } from 'tsparticles-confetti';
 export class GameComponent {
 
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
-  @ViewChild('timer') timer!:TimerComponent;
-  @ViewChild('minesweeper') minesweeper!:ClassicalBoardComponent;
+  @ViewChild('timer') timer!: TimerComponent;
+  @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
-  playingTime:number = 0;
+  playingTime: number = 0;
+  stopConfettis: boolean = false;
 
-  startNewGame(){
+  startNewGame() {
     this.minesweeper.initializeBoard();
     this.result = undefined;
     this.timer.clearTimer();
     this.timer.startTimer();
+    this.stopConfettis = true;
   }
 
   updateGameStatus(status: string) {
     if (status === 'WON' || status === 'GAMEOVER') {
       if (status === 'WON') {
+        this.stopConfettis = false;
         this.triggerConfettis();
       }
       this.playingTime = this.timer.counter;
@@ -50,10 +54,10 @@ export class GameComponent {
     animationEnd = Date.now() + duration,
     defaults = { startVelocity: 20, spread: 360, ticks: 60, zIndex: 0 };
 
-    const interval = setInterval(function() {
+    const interval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
     
-      if (timeLeft <= 0) {
+      if (timeLeft <= 0 || this.stopConfettis) {
         return clearInterval(interval);
       }
     

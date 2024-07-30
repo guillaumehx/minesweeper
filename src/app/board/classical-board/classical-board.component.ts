@@ -24,7 +24,7 @@ export class ClassicalBoardComponent implements OnInit {
   board!: ClassicalBoard;
   flagsNumber: number = 0;
   private classicalBoardService: ClassicalBoardService;
-  private hasStarted: boolean = false;
+  public hasStarted: boolean = false;
 
   constructor(tileService: ClassicalBoardService) {
     this.classicalBoardService = tileService;

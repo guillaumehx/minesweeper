@@ -18,16 +18,3 @@ ul.actions{
 ul.actions li{
   display: inline-block;
 }
-
-ul.actions a{
-  border: 8px solid #A3A7AE;
-  border-radius: 10px;
-  padding: 6px 12px;
-  text-decoration: none;
-  font-weight: bold;
-  color: rgba(0,0,0,0.5);
-}
-
-ul.actions a:hover{
-  background: #A3A7AE;
-}

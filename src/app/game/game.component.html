@@ -12,7 +12,7 @@
     <tr *ngIf="displayInputs">
       <td><b>Rows: </b><input type="number" min="1" [(ngModel)]="rowsInput" (input)="updateBoard()"></td>
       <td><b>Columns: </b><input type="number" min="1" [(ngModel)]="columnsInput" (input)="updateBoard()"></td>
-      <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="minesInput" (input)="updateBoard()"></td>
+      <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="minesInput" [max]="maxMines" (input)="updateBoard()"></td>
     </tr>
   </table>
   <classical-board

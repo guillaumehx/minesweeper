@@ -32,6 +32,7 @@ export class GameComponent {
   rowsInput: number = 1;
   columnsInput: number = 1;
   minesInput: number = 1;
+  maxMines: number = 0;
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
     if(rows !== undefined && columns !== undefined && mines !== undefined) {
@@ -92,6 +93,7 @@ export class GameComponent {
   }
 
   updateBoard() {
+    this.maxMines = this.rowsInput * this.columnsInput;
     this.startNewGame(this.rowsInput, this.columnsInput, this.minesInput);
   }
 }

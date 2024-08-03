@@ -94,8 +94,13 @@ export class GameComponent {
 
   customGame() {
     this.displayInputs = !this.displayInputs;
-    this.startNewGame(this.rowsInput, this.columnsInput, this.minesInput);
+    this.rowsInput = 1;
+    this.columnsInput = 1;
+    this.minesInput = 1;
+    this.updateBoard();
   }
+
+
 
   updateBoard() {
     this.maxMines = this.rowsInput * this.columnsInput;

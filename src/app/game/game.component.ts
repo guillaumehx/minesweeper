@@ -93,7 +93,9 @@ export class GameComponent {
   }
 
   customGame() {
-    this.displayInputs = !this.displayInputs;
+    if (!this.displayInputs) {
+      this.displayInputs = true;
+    }
     this.rowsInput = 1;
     this.columnsInput = 1;
     this.minesInput = 1;

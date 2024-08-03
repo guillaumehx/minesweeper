@@ -2,17 +2,30 @@
   <br>
   <img class="animate__animated animate__rubberBand" src="../../assets/images/logo.png">
   <br>
+  <table>
+    <tr>
+      <td><span class="btn" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
+      <td><span class="btn" (click)="startNewGame(16, 16, 48); displayInputs = false">Intermediate</span></td>
+      <td><span class="btn" (click)="startNewGame(16, 24, 72); displayInputs = false">Expert</span></td>
+      <td><span class="btn" (click)="displayInputs = !displayInputs">Custom</span></td>
+    </tr>
+    <tr *ngIf="displayInputs">
+      <td><b>Rows: </b><input type="number" min="1" [(ngModel)]="rowsInput" (input)="updateBoard()"></td>
+      <td><b>Columns: </b><input type="number" min="1" [(ngModel)]="columnsInput" (input)="updateBoard()"></td>
+      <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="minesInput" [max]="maxMines" (input)="updateBoard()"></td>
+    </tr>
+  </table>
   <classical-board
-    [rowsNumber]="16"
-    [columnsNumber]="16"
-    [minesNumber]="48"
+    [rowsNumber]="10"
+    [columnsNumber]="10"
+    [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     #minesweeper></classical-board>
   <p *ngIf="result == 'WON'">Tu as gagné en {{playingTime | date:'mm:ss'}}</p>
   <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
   <ul class="actions">
     <br>
-    <li><a (click)="startNewGame()">New game</a></li>
+    <li><span class="btn" (click)="startNewGame()">New game</span></li>
   </ul>
   <div class="time" [class.hidden]="result != 'ONGOING'">
     <timer #timer></timer>

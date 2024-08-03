@@ -14,9 +14,9 @@ export class ClassicalBoardService {
   }
 
   revealTile(board : ClassicalBoard, tile:Tile):void {
-    if(tile.isRevealed) return;
+    if(tile?.isRevealed) return;
 
-    if(tile.isMine) {
+    if(tile?.isMine) {
       this.tileService.reveal(tile);
       this.setGameOver(board);
       alert('boum');

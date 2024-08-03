@@ -4,6 +4,7 @@ import {DatePipe, NgIf} from "@angular/common";
 import {TimerComponent} from "../timer/timer.component";
 import { confetti } from 'tsparticles-confetti';
 import 'animate.css';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'game',
@@ -12,7 +13,8 @@ import 'animate.css';
     ClassicalBoardComponent,
     NgIf,
     TimerComponent,
-    DatePipe
+    DatePipe,
+    FormsModule
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
@@ -25,8 +27,20 @@ export class GameComponent {
 
   playingTime: number = 0;
   stopConfettis: boolean = false;
+  displayInputs: boolean = false;
+  
+  rowsInput: number = 1;
+  columnsInput: number = 1;
+  minesInput: number = 1;
+  maxMines: number = 0;
 
-  startNewGame() {
+  startNewGame(rows?: number, columns?: number, mines?: number) {
+    if(rows !== undefined && columns !== undefined && mines !== undefined) {
+      this.minesweeper.rowsNumber = rows;
+      this.minesweeper.columnsNumber = columns;
+      this.minesweeper.minesNumber = mines;
+    }
+    
     this.minesweeper.initializeBoard();
     this.result = undefined;
     this.timer.clearTimer();
@@ -76,5 +90,10 @@ export class GameComponent {
         })
       );
     }, 250);
+  }
+
+  updateBoard() {
+    this.maxMines = this.rowsInput * this.columnsInput;
+    this.startNewGame(this.rowsInput, this.columnsInput, this.minesInput);
   }
 }

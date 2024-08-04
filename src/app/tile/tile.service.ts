@@ -23,19 +23,26 @@ export class TileService {
     }
   }
 
-  generateTiles(tilesNumber:number, minesNumber:number):Tile[] { // dans un Service ?
+  generateTiles(tilesNumber:number):Tile[] {
     let tiles: Tile[] = [];
     for(let i = 0; i< tilesNumber; i++) {
       tiles.push(new Tile(i, false));
     }
+    return tiles;
+  }
+
+  assignMines(tiles: Tile[], minesNumber:number):Tile[] {
+    let tilesNumber = tiles.length;
+    minesNumber = Math.min(tilesNumber, minesNumber);
     while (minesNumber > 0) {
-        var idxMine = Util.getRandomInt(0, tilesNumber);
-        if(!tiles[idxMine].isMine) {
-            tiles[idxMine].isMine = true;
-            minesNumber--;
-        }
+      var idxMine = Util.getRandomInt(0, tilesNumber);
+      if(!tiles[idxMine].isMine) {
+        tiles[idxMine].isMine = true;
+        minesNumber--;
+      }
     }
     return tiles;
   }
 
 }
+

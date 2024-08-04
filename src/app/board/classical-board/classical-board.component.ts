@@ -4,6 +4,7 @@ import {TileComponent} from "../../tile/tile.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {ClassicalBoardService} from "./classical-board.service";
 import {ClassicalBoard} from "./classical-board";
+import {GenerationStrategy} from "../../utils/types";
 
 @Component({
   selector: 'classical-board',
@@ -25,6 +26,7 @@ export class ClassicalBoardComponent implements OnInit {
   flagsNumber: number = 0;
   private classicalBoardService: ClassicalBoardService;
   public hasStarted: boolean = false;
+  private generationStrategy:GenerationStrategy = 'AT_FIRST_CLICK';
 
   constructor(tileService: ClassicalBoardService) {
     this.classicalBoardService = tileService;
@@ -35,7 +37,7 @@ export class ClassicalBoardComponent implements OnInit {
   }
 
   initializeBoard() {
-    this.board = this.classicalBoardService.generateTileBoard(this.rowsNumber, this.columnsNumber, this.minesNumber);
+    this.board = this.classicalBoardService.generateTileBoard(this.rowsNumber, this.columnsNumber, this.minesNumber, this.generationStrategy);
     this.board.status = 'ONGOING';
     this.hasStarted = false;
     this.flagsNumber = 0;
@@ -45,6 +47,7 @@ export class ClassicalBoardComponent implements OnInit {
     if(!this.hasStarted) {
       this.hasStarted = true;
       this.notifyGameStatus.emit('ONGOING');
+      this.classicalBoardService.finishInitialization(this.board.tiles, this.generationStrategy, this.minesNumber, tile);
     }
 
     if(!tile || tile.isFlagged){

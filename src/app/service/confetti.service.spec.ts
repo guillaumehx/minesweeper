@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ConfettiService } from './confetti.service';
 
 describe('ConfettiService', () => {

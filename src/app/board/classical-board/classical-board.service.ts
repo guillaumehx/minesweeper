@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Tile} from "../../tile/tile";
-import {TileService} from "../../tile/tile.service";
 import {ClassicalBoard} from "./classical-board";
 import {GenerationStrategy} from "../../utils/types";
 import {Util} from "../../utils/util";
+import { TileService } from '../../service/tile.service';
 
 @Injectable({
   providedIn: 'root'

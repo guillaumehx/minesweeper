@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Tile} from "../../tile/tile";
-import {TileService} from "../../tile/tile.service";
 import {ClassicalBoard} from "./classical-board";
+import {GenerationStrategy} from "../../utils/types";
+import {Util} from "../../utils/util";
+import { TileService } from '../../service/tile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +39,13 @@ export class ClassicalBoardService {
       board.status = 'WON';
     }
   }
-  generateTileBoard(rowsNumber:number, columnsNumber:number, minesNumber:number):ClassicalBoard {
+  generateTileBoard(rowsNumber:number, columnsNumber:number, minesNumber:number, generationStrategy:GenerationStrategy):ClassicalBoard {
     let classicalBoard = new ClassicalBoard(1, minesNumber);
 
-    let tiles = this.tileService.generateTiles(rowsNumber*columnsNumber, minesNumber);
+    let tiles = this.tileService.generateTiles(rowsNumber*columnsNumber);
+    if(generationStrategy == 'BEFORE_STARTING') {
+      tiles = this.tileService.assignMines(tiles, minesNumber);
+    }
 
     //set them in a two dimensional array
     let tileIdx = 0;
@@ -77,6 +82,34 @@ export class ClassicalBoardService {
       }
     }
     return neighbors;
+  }
+
+  finishInitialization(tileBoard:Tile[][], generationStrategy:GenerationStrategy, minesNumber:number, tile:Tile):void {
+    if(generationStrategy == 'AT_FIRST_CLICK') {
+      this.assignMinesAroundTile(tileBoard, minesNumber, tile);
+    }
+  }
+
+  private assignMinesAroundTile(tileBoard:Tile[][], minesNumber:number, tile:Tile):void {
+    let tilesToAvoid = tile.neighbors.slice();
+    tilesToAvoid.push(tile);
+    let boardSize = tileBoard[0].length * tileBoard.length;
+
+    minesNumber = Math.min(boardSize, minesNumber);
+
+    if(boardSize - tilesToAvoid.length < minesNumber) return;
+
+    while (minesNumber > 0) {
+      let row = Util.getRandomInt(0, tileBoard.length);
+      let column = Util.getRandomInt(0, tileBoard[0].length);
+      let evaluatedTile = tileBoard[row][column];
+      if(!tilesToAvoid.includes(evaluatedTile) && !evaluatedTile.isMine) {
+        evaluatedTile.isMine = true;
+        minesNumber--;
+      }
+    }
+
+    return;
   }
 
 

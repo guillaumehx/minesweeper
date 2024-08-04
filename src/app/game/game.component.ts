@@ -2,9 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {ClassicalBoardComponent} from "../board/classical-board/classical-board.component";
 import {DatePipe, NgIf} from "@angular/common";
 import {TimerComponent} from "../timer/timer.component";
-import { confetti } from 'tsparticles-confetti';
-import 'animate.css';
 import { FormsModule } from '@angular/forms';
+import { ConfettiService } from '../service/confetti.service';
+import 'animate.css';
 
 @Component({
   selector: 'game',
@@ -26,13 +26,12 @@ export class GameComponent {
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
   playingTime: number = 0;
-  stopConfettis: boolean = false;
   displayInputs: boolean = false;
   
-  rowsInput: number = 1;
-  columnsInput: number = 1;
-  minesInput: number = 1;
+  input: {row: number, column: number, mine: number} = { row: 1, column: 1, mine: 1 };
   maxMines: number = 0;
+
+  constructor(private conffetiService: ConfettiService) { }
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
     if(rows !== undefined && columns !== undefined && mines !== undefined) {
@@ -45,14 +44,14 @@ export class GameComponent {
     this.result = undefined;
     this.timer.clearTimer();
     this.timer.startTimer();
-    this.stopConfettis = true;
+    this.conffetiService.stopConfettis(true);
   }
 
   updateGameStatus(status: string) {
     if (status === 'WON' || status === 'GAMEOVER') {
       if (status === 'WON') {
-        this.stopConfettis = false;
-        this.triggerConfettis();
+        this.conffetiService.stopConfettis(false);
+        this.conffetiService.triggerConfettis();
       }
       this.playingTime = this.timer.counter;
       this.timer.clearTimer();
@@ -63,49 +62,18 @@ export class GameComponent {
     }
   }
 
-  triggerConfettis() {
-    const duration = 15 * 1000,
-    animationEnd = Date.now() + duration,
-    defaults = { startVelocity: 20, spread: 360, ticks: 60, zIndex: 0 };
-
-    const interval = setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-    
-      if (timeLeft <= 0 || this.stopConfettis) {
-        return clearInterval(interval);
-      }
-    
-      const particleCount = 20 * (timeLeft / duration);
-    
-      confetti(
-        Object.assign({}, defaults, {
-          particleCount,
-          origin: { x: Math.random() * (0.3 - 0.1) + 0.1, y: Math.random() - 0.2 },
-        })
-      );
-      confetti(
-        Object.assign({}, defaults, {
-          particleCount,
-          origin: { x: Math.random() * (0.9 - 0.7) + 0.7, y: Math.random() - 0.2 },
-        })
-      );
-    }, 250);
-  }
-
   customGame() {
     if (!this.displayInputs) {
       this.displayInputs = true;
     }
-    this.rowsInput = 1;
-    this.columnsInput = 1;
-    this.minesInput = 1;
+    this.input.row = 1;
+    this.input.column = 1;
+    this.input.mine = 1;
     this.updateBoard();
   }
 
-
-
   updateBoard() {
-    this.maxMines = this.rowsInput * this.columnsInput;
-    this.startNewGame(this.rowsInput, this.columnsInput, this.minesInput);
+    this.maxMines = this.input.row * this.input.column;
+    this.startNewGame(this.input.row, this.input.column, this.input.mine);
   }
 }

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tile} from "../../tile/tile";
 import {TileComponent} from "../../tile/tile.component";
 import {NgForOf, NgIf} from "@angular/common";
-import {ClassicalBoardService} from "../../service/classical-board.service";
+import {ClassicalBoardService} from "../../service/classical-board/classical-board.service";
 import {ClassicalBoard} from "./classical-board";
 import {GenerationStrategy} from "../../utils/types";
 

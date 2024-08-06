@@ -17,7 +17,14 @@ export class ClassicalBoardService {
   }
 
   revealTile(board : ClassicalBoard, tile:Tile):void {
-    if(tile?.isRevealed) return;
+    if(tile?.isRevealed) {
+      let surroundingMines = tile.getThreatCount();
+      let flaggedMines = tile.neighbors.filter(n => n.isFlagged).length;
+      if (surroundingMines > 0 && flaggedMines == surroundingMines) {
+        tile.neighbors.filter(n => !n.isRevealed && !n.isFlagged).forEach( n => this.revealTile(board,n));
+      }
+      return;
+    }
 
     if(tile?.isMine) {
       this.tileService.reveal(tile);

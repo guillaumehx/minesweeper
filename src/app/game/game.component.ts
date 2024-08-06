@@ -1,9 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
-import {ClassicalBoardComponent} from "../board/classical-board/classical-board.component";
-import {DatePipe, NgIf} from "@angular/common";
-import {TimerComponent} from "../timer/timer.component";
+import { Component, ViewChild } from '@angular/core';
+import { ClassicalBoardComponent } from "../board/classical-board/classical-board.component";
+import { DatePipe, NgIf } from "@angular/common";
+import { TimerComponent } from "../timer/timer.component";
 import { FormsModule } from '@angular/forms';
-import { ConfettiService } from '../service/confetti.service';
+import { ConfettiService } from '../service/confetti/confetti.service';
 import 'animate.css';
 
 @Component({
@@ -22,6 +22,8 @@ import 'animate.css';
 export class GameComponent {
 
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
+  // This field is required for the shaking animation
+  @ViewChild('content') content!: HTMLElement;
   @ViewChild('timer') timer!: TimerComponent;
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
@@ -39,7 +41,6 @@ export class GameComponent {
       this.minesweeper.columnsNumber = columns;
       this.minesweeper.minesNumber = mines;
     }
-    
     this.minesweeper.initializeBoard();
     this.result = undefined;
     this.timer.clearTimer();

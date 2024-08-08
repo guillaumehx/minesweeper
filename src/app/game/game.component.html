@@ -22,7 +22,6 @@
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     #minesweeper></classical-board>
-  <p *ngIf="result == 'WON'">Tu as gagné en {{playingTime | date:'mm:ss'}}</p>
   <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
   <ul class="actions">
     <br>

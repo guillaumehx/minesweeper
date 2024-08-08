@@ -1,8 +1,11 @@
 <div class="scene">
   <div class="board">
+    <div class="banner">
+      <div class="box right">{{ minesNumber - flagsNumber }}</div>
+      <div class="box left">{{ count }}</div>
+    </div>
     <div *ngFor="let row of tiles" class="row">
       <tile *ngFor="let tile of row" [tile]="tile" (click)="handleTileClick(tile)" (contextmenu)="onRightClick(tile)"></tile>
     </div>
   </div>
-  <p *ngIf="hasStarted">Vous avez trouvé {{flagsNumber}} sur {{minesNumber}} </p>
 </div>

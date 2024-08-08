@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Tile } from '../../tile/tile';
 import { Util } from '../../utils/util';
 
-
 @Injectable({
   providedIn: 'root'
 })

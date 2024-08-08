@@ -2,6 +2,7 @@
   <br>
   <img class="animate__animated animate__rubberBand" src="../../assets/images/logo.png">
   <br>
+  <br>
   <table>
     <tr>
       <td><span class="btn" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
@@ -27,8 +28,5 @@
     <br>
     <li><span class="btn" (click)="startNewGame()">New game</span></li>
   </ul>
-  <div class="time" [class.hidden]="result != 'ONGOING'">
-    <timer #timer></timer>
-  </div>
 </div>
 

@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Tile} from "../../tile/tile";
-import {TileComponent} from "../../tile/tile.component";
-import {NgForOf, NgIf} from "@angular/common";
-import {ClassicalBoardService} from "../../service/classical-board/classical-board.service";
-import {ClassicalBoard} from "./classical-board";
-import {GenerationStrategy} from "../../utils/types";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Tile } from "../../tile/tile";
+import { TileComponent } from "../../tile/tile.component";
+import { NgForOf, NgIf } from "@angular/common";
+import { ClassicalBoardService } from "../../service/classical-board/classical-board.service";
+import { ClassicalBoard } from "./classical-board";
+import { GenerationStrategy } from "../../utils/types";
+import { TimerService } from '../../service/timer/timer.service';
 
 @Component({
   selector: 'classical-board',
@@ -18,26 +19,31 @@ import {GenerationStrategy} from "../../utils/types";
   styleUrl: './classical-board.component.css'
 })
 export class ClassicalBoardComponent implements OnInit {
+
   @Input() rowsNumber!: number;
   @Input() columnsNumber!: number;
   @Input() minesNumber!: number;
   @Output() notifyGameStatus:EventEmitter<string> = new EventEmitter();
   board!: ClassicalBoard;
   flagsNumber: number = 0;
-  private classicalBoardService: ClassicalBoardService;
   public hasStarted: boolean = false;
   private generationStrategy:GenerationStrategy = 'AT_FIRST_CLICK';
+  count: number = 0;
 
-  constructor(tileService: ClassicalBoardService) {
-    this.classicalBoardService = tileService;
-  }
+  constructor(
+    private tileService: ClassicalBoardService,
+    private timerService: TimerService
+  ) { }
 
   ngOnInit(): void {
     this.initializeBoard();
+    this.timerService.timerEmitter.subscribe((count) => {
+      this.count = count;
+    });
   }
 
   initializeBoard() {
-    this.board = this.classicalBoardService.generateTileBoard(this.rowsNumber, this.columnsNumber, this.minesNumber, this.generationStrategy);
+    this.board = this.tileService.generateTileBoard(this.rowsNumber, this.columnsNumber, this.minesNumber, this.generationStrategy);
     this.board.status = 'ONGOING';
     this.hasStarted = false;
     this.flagsNumber = 0;
@@ -47,7 +53,7 @@ export class ClassicalBoardComponent implements OnInit {
     if(!this.hasStarted) {
       this.hasStarted = true;
       this.notifyGameStatus.emit('ONGOING');
-      this.classicalBoardService.finishInitialization(this.board.tiles, this.generationStrategy, this.minesNumber, tile);
+      this.tileService.finishInitialization(this.board.tiles, this.generationStrategy, this.minesNumber, tile);
     }
 
     if(!tile || tile.isFlagged){
@@ -56,7 +62,7 @@ export class ClassicalBoardComponent implements OnInit {
     if (this.board.isGameOver() || this.board.isWon()) {
       return;
     }
-    this.classicalBoardService.revealTile(this.board, tile);
+    this.tileService.revealTile(this.board, tile);
 
     if(this.board.isWon() ||this.board.isGameOver()) {
       this.notifyGameStatus.emit(this.board.status);
@@ -79,6 +85,5 @@ export class ClassicalBoardComponent implements OnInit {
   get tiles():Tile[][] {
     return this.board.tiles;
   }
-
 
 }

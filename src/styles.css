@@ -1,4 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'animate.css/animate.min.css';
+
+@font-face {
+  font-family: 'Digital';
+  src: URL('./assets/fonts/digital-7.ttf') format('truetype');
+}
+
 body {
   background: #E0E2E4 no-repeat 23px 30px;
   background-size: 380px;

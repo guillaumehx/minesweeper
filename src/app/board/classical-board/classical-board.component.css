@@ -13,3 +13,25 @@
 .row {
   display: flex;
 }
+
+.banner {
+  border-bottom: 8px solid black;
+  height: 60px;
+  font-family: Digital;
+  text-shadow: 4px 4px 4px grey;
+  font-size: 60px;
+  display: flex;
+}
+
+.banner > .box {
+  width: 50%;
+  text-align: center;
+}
+
+.left {
+  border-left: 2px solid black;
+}
+
+.right {
+  border-right: 2px solid black;
+}

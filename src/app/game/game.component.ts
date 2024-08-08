@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ClassicalBoardComponent } from "../board/classical-board/classical-board.component";
 import { DatePipe, NgIf } from "@angular/common";
-import { TimerComponent } from "../timer/timer.component";
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
-import 'animate.css';
+import { TimerService } from '../service/timer/timer.service';
 
 @Component({
   selector: 'game',
@@ -12,7 +11,6 @@ import 'animate.css';
   imports: [
     ClassicalBoardComponent,
     NgIf,
-    TimerComponent,
     DatePipe,
     FormsModule
   ],
@@ -24,7 +22,6 @@ export class GameComponent {
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
   // This field is required for the shaking animation
   @ViewChild('content') content!: HTMLElement;
-  @ViewChild('timer') timer!: TimerComponent;
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
   playingTime: number = 0;
@@ -33,7 +30,10 @@ export class GameComponent {
   input: {row: number, column: number, mine: number} = { row: 1, column: 1, mine: 1 };
   maxMines: number = 0;
 
-  constructor(private conffetiService: ConfettiService) { }
+  constructor(
+    private conffetiService: ConfettiService,
+    private timerService: TimerService
+  ) { }
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
     if(rows !== undefined && columns !== undefined && mines !== undefined) {
@@ -43,8 +43,8 @@ export class GameComponent {
     }
     this.minesweeper.initializeBoard();
     this.result = undefined;
-    this.timer.clearTimer();
-    this.timer.startTimer();
+    this.timerService.clear();
+    this.timerService.start();
     this.conffetiService.stopConfettis(true);
   }
 
@@ -54,11 +54,10 @@ export class GameComponent {
         this.conffetiService.stopConfettis(false);
         this.conffetiService.triggerConfettis();
       }
-      this.playingTime = this.timer.counter;
-      this.timer.clearTimer();
+      this.timerService.stop();
       this.result = status;
     } else if (status === 'ONGOING') {
-      this.timer.startTimer();
+      this.timerService.start();
       this.result = status;
     }
   }

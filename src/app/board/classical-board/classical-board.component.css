@@ -4,10 +4,9 @@
 }
 
 .board {
-    border: 8px solid black;
-    border-radius: 10px;
-    margin: 20px auto;
-    background: #A3A7AE;
+  border: 2px solid #606368;
+  margin: 20px auto;
+  background: #B4B7BD;
 }
 
 .row {
@@ -15,7 +14,7 @@
 }
 
 .banner {
-  border-bottom: 8px solid black;
+  border-bottom: 2px solid #606368;
   height: 60px;
   font-family: Digital;
   text-shadow: 4px 4px 4px grey;
@@ -29,9 +28,9 @@
 }
 
 .left {
-  border-left: 2px solid black;
+  border-left: 1px solid #606368;
 }
 
 .right {
-  border-right: 2px solid black;
+  border-right: 1px solid #606368;
 }

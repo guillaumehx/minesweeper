@@ -5,10 +5,10 @@
   <br>
   <table>
     <tr>
-      <td><span class="btn" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
-      <td><span class="btn" (click)="startNewGame(16, 16, 48); displayInputs = false">Intermediate</span></td>
-      <td><span class="btn" (click)="startNewGame(16, 24, 72); displayInputs = false">Expert</span></td>
-      <td><span class="btn" (click)="customGame()">Custom</span></td>
+      <td><span class="button" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
+      <td><span class="button" (click)="startNewGame(16, 16, 48); displayInputs = false">Intermediate</span></td>
+      <td><span class="button" (click)="startNewGame(16, 24, 72); displayInputs = false">Expert</span></td>
+      <td><span class="button" (click)="customGame()">Custom</span></td>
     </tr>
     <tr *ngIf="displayInputs">
       <td><b>Rows: </b><input type="number" min="1" [(ngModel)]="input.row" (input)="updateBoard()"></td>
@@ -25,7 +25,7 @@
   <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
   <ul class="actions">
     <br>
-    <li><span class="btn" (click)="startNewGame()">New game</span></li>
+    <li><span class="button" (click)="startNewGame()">New game</span></li>
   </ul>
 </div>
 

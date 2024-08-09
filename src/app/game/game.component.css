@@ -18,21 +18,28 @@ table {
   border-collapse: collapse;
 }
 
-.btn {
-  border: 8px solid #A3A7AE;
-  border-radius: 10px;
-  padding: 6px 12px;
-  text-decoration: none;
-  font-weight: bold;
-  color: rgba(0,0,0,0.5);
-  cursor: pointer;
-}
-
 input {
   width: 60px;
   height: 20px;
 }
 
-.btn:hover {
-  background: #A3A7AE;
+.button {
+  padding: 16px;
+  background-image:
+    radial-gradient(
+      circle at top left,
+      #E0E2E4,
+      #A3A7AE
+    );
+  cursor: pointer;
+  border: 2px solid #606368;
+}
+
+.button:hover {
+  background-image:
+  radial-gradient(
+    circle at bottom right,
+    #E0E2E4,
+    #A3A7AE
+  );
 }

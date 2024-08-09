@@ -66,8 +66,8 @@ export class GameComponent {
     if (!this.displayInputs) {
       this.displayInputs = true;
     }
-    this.input.row = 1;
-    this.input.column = 1;
+    this.input.row = 3;
+    this.input.column = 3;
     this.input.mine = 1;
     this.updateBoard();
   }

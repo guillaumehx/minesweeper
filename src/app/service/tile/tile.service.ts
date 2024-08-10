@@ -17,7 +17,7 @@ export class TileService {
 
     let threatCount = tile.getThreatCount();
     if (threatCount == 0) {
-      for(let neighbor of tile.neighbors) {
+      for (let neighbor of tile.neighbors) {
         this.reveal(neighbor);
       }
     }
@@ -25,7 +25,7 @@ export class TileService {
 
   generateTiles(tilesNumber:number):Tile[] {
     let tiles: Tile[] = [];
-    for(let i = 0; i< tilesNumber; i++) {
+    for (let i = 0; i< tilesNumber; i++) {
       tiles.push(new Tile(i, false));
     }
     return tiles;

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tile } from "../../tile/tile";
 import { TileComponent } from "../../tile/tile.component";
-import { NgForOf, NgIf } from "@angular/common";
+import { AsyncPipe, NgForOf, NgIf } from "@angular/common";
 import { ClassicalBoardService } from "../../service/classical-board/classical-board.service";
 import { ClassicalBoard } from "./classical-board";
 import { GenerationStrategy } from "../../utils/types";
@@ -13,7 +13,8 @@ import { TimerService } from '../../service/timer/timer.service';
   imports: [
     TileComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './classical-board.component.html',
   styleUrl: './classical-board.component.css'
@@ -28,18 +29,14 @@ export class ClassicalBoardComponent implements OnInit {
   flagsNumber: number = 0;
   public hasStarted: boolean = false;
   private generationStrategy:GenerationStrategy = 'AT_FIRST_CLICK';
-  count: number = 0;
 
   constructor(
     private tileService: ClassicalBoardService,
-    private timerService: TimerService
+    public timerService: TimerService
   ) { }
 
   ngOnInit(): void {
     this.initializeBoard();
-    this.timerService.timerEmitter.subscribe((count) => {
-      this.count = count;
-    });
   }
 
   initializeBoard() {

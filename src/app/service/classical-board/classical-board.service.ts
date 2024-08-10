@@ -17,7 +17,7 @@ export class ClassicalBoardService {
   }
 
   revealTile(board : ClassicalBoard, tile:Tile):void {
-    if(tile?.isRevealed) {
+    if (tile?.isRevealed) {
       let surroundingMines = tile.getThreatCount();
       let flaggedMines = tile.neighbors.filter(n => n.isFlagged).length;
       if (surroundingMines > 0 && flaggedMines == surroundingMines) {
@@ -26,7 +26,7 @@ export class ClassicalBoardService {
       return;
     }
 
-    if(tile?.isMine) {
+    if (tile?.isMine) {
       this.tileService.reveal(tile);
       this.setGameOver(board);
       this.overlayService.on();
@@ -42,7 +42,7 @@ export class ClassicalBoardService {
     board.tileSet.filter((tile) => tile.isMine || tile.isFlagged).forEach((tile) => tile.isRevealed = true);
   }
   checkVictory(board : ClassicalBoard) {
-    if(board.tileSet.filter((tile) => !tile.isMine && !tile.isRevealed).length == 0) {
+    if (board.tileSet.filter((tile) => !tile.isMine && !tile.isRevealed).length == 0) {
       //if all not mine are revealed, you win
       board.status = 'WON';
     }
@@ -51,24 +51,24 @@ export class ClassicalBoardService {
     let classicalBoard = new ClassicalBoard(1, minesNumber);
 
     let tiles = this.tileService.generateTiles(rowsNumber*columnsNumber);
-    if(generationStrategy == 'BEFORE_STARTING') {
+    if (generationStrategy == 'BEFORE_STARTING') {
       tiles = this.tileService.assignMines(tiles, minesNumber);
     }
 
     //set them in a two dimensional array
     let tileIdx = 0;
     let tileBoard:Tile[][] = [];
-    for(var i = 0;i < rowsNumber; i++){
-      for(var j = 0;j < columnsNumber; j++){
-        if(j == 0) tileBoard[i] = [];
+    for(var i = 0;i < rowsNumber; i++) {
+      for(var j = 0;j < columnsNumber; j++) {
+        if (j == 0) tileBoard[i] = [];
         tileBoard[i].push(tiles[tileIdx]);
         tileIdx ++;
       }
     }
 
     //set the neighboors for each tile
-    for(let i = 0;i < tileBoard.length; i++){
-      for(let j = 0;j < tileBoard[i].length; j++){
+    for(let i = 0;i < tileBoard.length; i++) {
+      for(let j = 0;j < tileBoard[i].length; j++) {
         tileBoard[i][j].neighbors = this.getNeighbors(tileBoard, i, j);
       }
     }
@@ -82,10 +82,10 @@ export class ClassicalBoardService {
   private getNeighbors(tileBoard:Tile[][], row:number, column: number) {
     let neighbors = [];
     for(var i = -1;i <= 1; i++) {
-      if(row + i < 0 || row + i >= tileBoard.length) continue;
+      if (row + i < 0 || row + i >= tileBoard.length) continue;
       for (var j = -1; j <= 1; j++) {
-        if(column + j < 0 || column + j >= tileBoard[row].length) continue;
-        if(i == 0 && j == 0) continue;
+        if (column + j < 0 || column + j >= tileBoard[row].length) continue;
+        if (i == 0 && j == 0) continue;
         neighbors.push(tileBoard[row + i][column + j]);
       }
     }
@@ -93,7 +93,7 @@ export class ClassicalBoardService {
   }
 
   finishInitialization(tileBoard:Tile[][], generationStrategy:GenerationStrategy, minesNumber:number, tile:Tile):void {
-    if(generationStrategy == 'AT_FIRST_CLICK') {
+    if (generationStrategy == 'AT_FIRST_CLICK') {
       this.assignMinesAroundTile(tileBoard, minesNumber, tile);
     }
   }
@@ -105,13 +105,13 @@ export class ClassicalBoardService {
 
     minesNumber = Math.min(boardSize, minesNumber);
 
-    if(boardSize - tilesToAvoid.length < minesNumber) return;
+    if (boardSize - tilesToAvoid.length < minesNumber) return;
 
     while (minesNumber > 0) {
       let row = Util.getRandomInt(0, tileBoard.length);
       let column = Util.getRandomInt(0, tileBoard[0].length);
       let evaluatedTile = tileBoard[row][column];
-      if(!tilesToAvoid.includes(evaluatedTile) && !evaluatedTile.isMine) {
+      if (!tilesToAvoid.includes(evaluatedTile) && !evaluatedTile.isMine) {
         evaluatedTile.isMine = true;
         minesNumber--;
       }

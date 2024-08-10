@@ -10,13 +10,13 @@ export class TileService {
   constructor() { }
 
   reveal(tile: Tile) {
-    if(tile.isRevealed) return;
+    if (tile.isRevealed) return;
     tile.isRevealed = true;
 
-    if(tile.isMine) return;
+    if (tile.isMine) return;
 
     let threatCount = tile.getThreatCount();
-    if(threatCount == 0) {
+    if (threatCount == 0) {
       for(let neighbor of tile.neighbors) {
         this.reveal(neighbor);
       }
@@ -36,7 +36,7 @@ export class TileService {
     minesNumber = Math.min(tilesNumber, minesNumber);
     while (minesNumber > 0) {
       var idxMine = Util.getRandomInt(0, tilesNumber);
-      if(!tiles[idxMine].isMine) {
+      if (!tiles[idxMine].isMine) {
         tiles[idxMine].isMine = true;
         minesNumber--;
       }

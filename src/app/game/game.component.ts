@@ -36,7 +36,7 @@ export class GameComponent {
   ) { }
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
-    if(rows !== undefined && columns !== undefined && mines !== undefined) {
+    if (rows !== undefined && columns !== undefined && mines !== undefined) {
       this.minesweeper.rowsNumber = rows;
       this.minesweeper.columnsNumber = columns;
       this.minesweeper.minesNumber = mines;

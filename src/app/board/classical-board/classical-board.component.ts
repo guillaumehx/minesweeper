@@ -46,14 +46,14 @@ export class ClassicalBoardComponent implements OnInit {
     this.flagsNumber = 0;
   }
 
-  handleTileClick(tile:Tile){
-    if(!this.hasStarted) {
+  handleTileClick(tile:Tile) {
+    if (!this.hasStarted) {
       this.hasStarted = true;
       this.notifyGameStatus.emit('ONGOING');
       this.tileService.finishInitialization(this.board.tiles, this.generationStrategy, this.minesNumber, tile);
     }
 
-    if(!tile || tile.isFlagged){
+    if (!tile || tile.isFlagged) {
       return;
     }
     if (this.board.isGameOver() || this.board.isWon()) {
@@ -61,20 +61,20 @@ export class ClassicalBoardComponent implements OnInit {
     }
     this.tileService.revealTile(this.board, tile);
 
-    if(this.board.isWon() ||this.board.isGameOver()) {
+    if (this.board.isWon() ||this.board.isGameOver()) {
       this.notifyGameStatus.emit(this.board.status);
     }
   }
 
   onRightClick(tile:Tile) {
-    if(!this.hasStarted) {
+    if (!this.hasStarted) {
       this.hasStarted = true;
       this.notifyGameStatus.emit('ONGOING');
     }
 
-    if(tile.isRevealed) return false;
+    if (tile.isRevealed) return false;
     tile.isFlagged = !tile.isFlagged;
-    if(tile.isFlagged) this.flagsNumber++;
+    if (tile.isFlagged) this.flagsNumber++;
     else this.flagsNumber--;
     return false;
   }

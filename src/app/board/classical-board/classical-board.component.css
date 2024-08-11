@@ -23,8 +23,32 @@
 }
 
 .banner > .box {
-  width: 50%;
+  width: 33%;
   text-align: center;
+}
+
+.axo-button-play {
+  background: url(/assets/images/axo-play.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  cursor: pointer;
+}
+
+.axo-button-won {
+  background: url(/assets/images/axo-won.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  cursor: pointer;
+}
+
+.axo-button-lost {
+  background: url(/assets/images/axo-lost.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  cursor: pointer;
 }
 
 .left {

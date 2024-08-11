@@ -21,11 +21,7 @@
     [columnsNumber]="10"
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
+    (restartGameEvent)="startNewGame()"
     #minesweeper></classical-board>
-  <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
-  <ul class="actions">
-    <br>
-    <li><span class="button" (click)="startNewGame()">New game</span></li>
-  </ul>
 </div>
 

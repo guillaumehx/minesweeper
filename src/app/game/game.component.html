@@ -11,8 +11,8 @@
       <td><span class="button" (click)="customGame()">Custom</span></td>
     </tr>
     <tr *ngIf="displayInputs">
-      <td><b>Rows: </b><input type="number" min="1" [(ngModel)]="input.row" (input)="updateBoard()"></td>
-      <td><b>Columns: </b><input type="number" min="1" [(ngModel)]="input.column" (input)="updateBoard()"></td>
+      <td><b>Rows: </b><input type="number" min="3" [(ngModel)]="input.row" (input)="updateBoard()"></td>
+      <td><b>Columns: </b><input type="number" min="3" [(ngModel)]="input.column" (input)="updateBoard()"></td>
       <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="input.mine" [max]="maxMines" (input)="updateBoard()"></td>
     </tr>
   </table>

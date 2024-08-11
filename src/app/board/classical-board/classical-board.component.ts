@@ -24,7 +24,7 @@ export class ClassicalBoardComponent implements OnInit {
   @Input() rowsNumber!: number;
   @Input() columnsNumber!: number;
   @Input() minesNumber!: number;
-  @Output() notifyGameStatus:EventEmitter<string> = new EventEmitter();
+  @Output() notifyGameStatus:EventEmitter<{status: string, flagged: number, time: number}> = new EventEmitter();
   board!: ClassicalBoard;
   flagsNumber: number = 0;
   private hasStarted: boolean = false;
@@ -64,7 +64,7 @@ export class ClassicalBoardComponent implements OnInit {
     this.tileService.revealTile(this.board, tile);
 
     if (this.board.isWon() ||this.board.isGameOver()) {
-      this.notifyGameStatus.emit(this.board.status);
+      this.notifyGameStatus.emit({status: this.board.status, flagged: this.flagsNumber, time: this.timerService.counter - 1});
     }
   }
 
@@ -81,7 +81,7 @@ export class ClassicalBoardComponent implements OnInit {
   private start() {
     if (!this.hasStarted) {
       this.hasStarted = true;
-      this.notifyGameStatus.emit('ONGOING');
+      this.notifyGameStatus.emit({status: 'ONGOING', flagged: this.flagsNumber, time: this.timerService.counter});
     }
   }
 

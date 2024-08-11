@@ -5,9 +5,9 @@
   <br>
   <table>
     <tr>
-      <td><span class="button" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
-      <td><span class="button" (click)="startNewGame(16, 16, 48); displayInputs = false">Intermediate</span></td>
-      <td><span class="button" (click)="startNewGame(16, 24, 72); displayInputs = false">Expert</span></td>
+      <td><span class="button" (click)="startNewGame(10, 10, 18, 'Beginner'); displayInputs = false">Beginner</span></td>
+      <td><span class="button" (click)="startNewGame(16, 16, 48, 'Intermediate'); displayInputs = false">Intermediate</span></td>
+      <td><span class="button" (click)="startNewGame(16, 24, 72, 'Expert'); displayInputs = false">Expert</span></td>
       <td><span class="button" (click)="customGame()">Custom</span></td>
     </tr>
     <tr *ngIf="displayInputs">
@@ -16,16 +16,21 @@
       <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="input.mine" [max]="maxMines" (input)="updateBoard()"></td>
     </tr>
   </table>
+
   <classical-board
+    *ngIf="!settingsClicked"
     [rowsNumber]="10"
     [columnsNumber]="10"
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     #minesweeper></classical-board>
-  <p *ngIf="result == 'GAMEOVER'">Perdu !</p>
+  <!-- <p *ngIf="result == 'GAMEOVER'">Perdu !</p> -->
+  
+  <history *ngIf="settingsClicked"></history>
+
   <ul class="actions">
     <br>
     <li><span class="button" (click)="startNewGame()">New game</span></li>
+    <li style="height:30px; margin:auto;"><img src="https://cdn-icons-png.flaticon.com/512/7332/7332292.png" width="30" height="30" (click)="settingsClicked = !settingsClicked"></li>
   </ul>
 </div>
-

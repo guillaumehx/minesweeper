@@ -1,0 +1,19 @@
+<br>
+<div class="container">
+    <table>
+        <tr class="custom-th">
+            <th>Status</th>
+            <th>Mode</th>
+            <th>Playing time</th>
+            <th>Flagged mines</th>
+            <th>Date</th>
+        </tr>
+        <tr *ngFor="let item of history">
+            <td>{{item.status}}</td>
+            <td>{{item.mode}}</td>
+            <td>{{item.time}}</td>
+            <td>{{item.flagged}}</td>
+            <td>{{item.date | date:'medium'}} </td>
+        </tr>
+    </table>
+</div>

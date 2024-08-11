@@ -44,7 +44,6 @@ export class GameComponent {
     this.minesweeper.initializeBoard();
     this.result = undefined;
     this.timerService.clear();
-    this.timerService.start();
     this.conffetiService.stopConfettis(true);
   }
 

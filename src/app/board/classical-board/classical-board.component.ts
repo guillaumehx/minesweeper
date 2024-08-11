@@ -27,7 +27,8 @@ export class ClassicalBoardComponent implements OnInit {
   @Output() notifyGameStatus:EventEmitter<string> = new EventEmitter();
   board!: ClassicalBoard;
   flagsNumber: number = 0;
-  public hasStarted: boolean = false;
+  private hasStarted: boolean = false;
+  private firstTileRevealed:boolean = false;
   private generationStrategy:GenerationStrategy = 'AT_FIRST_CLICK';
 
   constructor(
@@ -43,14 +44,15 @@ export class ClassicalBoardComponent implements OnInit {
     this.board = this.tileService.generateTileBoard(this.rowsNumber, this.columnsNumber, this.minesNumber, this.generationStrategy);
     this.board.status = 'ONGOING';
     this.hasStarted = false;
+    this.firstTileRevealed = false;
     this.flagsNumber = 0;
   }
 
   handleTileClick(tile:Tile) {
-    if (!this.hasStarted) {
-      this.hasStarted = true;
-      this.notifyGameStatus.emit('ONGOING');
+    this.start();
+    if (!this.firstTileRevealed) {
       this.tileService.finishInitialization(this.board.tiles, this.generationStrategy, this.minesNumber, tile);
+      this.firstTileRevealed = true;
     }
 
     if (!tile || tile.isFlagged) {
@@ -67,16 +69,20 @@ export class ClassicalBoardComponent implements OnInit {
   }
 
   onRightClick(tile:Tile) {
-    if (!this.hasStarted) {
-      this.hasStarted = true;
-      this.notifyGameStatus.emit('ONGOING');
-    }
+    this.start();
 
     if (tile.isRevealed) return false;
     tile.isFlagged = !tile.isFlagged;
     if (tile.isFlagged) this.flagsNumber++;
     else this.flagsNumber--;
     return false;
+  }
+
+  private start() {
+    if (!this.hasStarted) {
+      this.hasStarted = true;
+      this.notifyGameStatus.emit('ONGOING');
+    }
   }
 
   get tiles():Tile[][] {

@@ -10,6 +10,7 @@ export class TileService {
   constructor() { }
 
   reveal(tile: Tile) {
+    if (tile.isFlagged) return;
     if (tile.isRevealed) return;
     tile.isRevealed = true;
 

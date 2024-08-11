@@ -104,14 +104,15 @@ export class ClassicalBoardService {
     let boardSize = tileBoard[0].length * tileBoard.length;
 
     minesNumber = Math.min(boardSize, minesNumber);
+    let isItPossible = true;
 
-    if (boardSize - tilesToAvoid.length < minesNumber) return;
+    if (boardSize - tilesToAvoid.length < minesNumber) isItPossible = false;
 
     while (minesNumber > 0) {
       let row = Util.getRandomInt(0, tileBoard.length);
       let column = Util.getRandomInt(0, tileBoard[0].length);
       let evaluatedTile = tileBoard[row][column];
-      if (!tilesToAvoid.includes(evaluatedTile) && !evaluatedTile.isMine) {
+      if (!isItPossible || (!tilesToAvoid.includes(evaluatedTile) && !evaluatedTile.isMine)) {
         evaluatedTile.isMine = true;
         minesNumber--;
       }

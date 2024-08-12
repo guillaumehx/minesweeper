@@ -98,4 +98,11 @@ export class GameComponent implements AfterViewInit {
     this.startNewGame(this.input.row, this.input.column, this.input.mine);
   }
 
+  settings() {
+    this.settingsClicked = !this.settingsClicked;
+    if (this.displayInputs) {
+      this.displayInputs = false;
+    }
+  }
+
 }

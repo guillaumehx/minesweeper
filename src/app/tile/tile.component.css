@@ -46,7 +46,7 @@
 }
 
 .flagged {
-  background: url(/assets/images/logo-sfeir.png);
+  background: url('../../assets/images/flag.png');
   background-size:24px;
   background-repeat:no-repeat;
   background-position:center;

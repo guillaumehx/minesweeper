@@ -24,13 +24,14 @@
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     #minesweeper></classical-board>
-  <!-- <p *ngIf="result == 'GAMEOVER'">Perdu !</p> -->
   
   <history *ngIf="settingsClicked"></history>
 
   <ul class="actions">
     <br>
     <li><span class="button" (click)="startNewGame()">New game</span></li>
-    <li style="height:30px; margin:auto;"><img src="https://cdn-icons-png.flaticon.com/512/7332/7332292.png" width="30" height="30" (click)="settingsClicked = !settingsClicked"></li>
   </ul>
+  <span style="height:30px; margin:auto;">
+    <img src="../../assets/images/settings.png" width="30" height="30" (click)="settingsClicked = !settingsClicked">
+  </span>
 </div>

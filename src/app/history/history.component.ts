@@ -1,4 +1,4 @@
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage/storage.service';
 
@@ -7,7 +7,8 @@ import { StorageService } from '../service/storage/storage.service';
   standalone: true,
   imports: [
     NgFor,
-    DatePipe
+    DatePipe,
+    NgIf
   ],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'

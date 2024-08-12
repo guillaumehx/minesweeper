@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div *ngIf="history.length > 0; else elseBlock" class="container">
     <table>
         <tr class="custom-th">
             <th>Status</th>
@@ -9,11 +9,12 @@
             <th>Date</th>
         </tr>
         <tr *ngFor="let item of history">
-            <td>{{item.status}}</td>
-            <td>{{item.mode}}</td>
-            <td>{{item.time}}</td>
-            <td>{{item.flagged}}</td>
-            <td>{{item.date | date:'medium'}} </td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.mode }} <span *ngIf="item.mode === 'Custom'">({{ item.input.row }}x{{ item.input.column }})</span></td>
+            <td>{{ item.time * 1000 | date:'mm:ss' }}</td>
+            <td>{{ item.flagged }}</td>
+            <td>{{ item.date | date:'d MMM y HH:mm:ss' }} </td>
         </tr>
     </table>
 </div>
+<ng-template #elseBlock><h2>No information to show.</h2></ng-template>

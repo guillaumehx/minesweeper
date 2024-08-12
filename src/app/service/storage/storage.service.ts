@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HistoryRecord } from '../../utils/types';
 
 const key: string = "GAME_HISTORY";
 
@@ -7,13 +8,13 @@ const key: string = "GAME_HISTORY";
 })
 export class StorageService {
 
-  insert(record: any): void {
+  insert(record: HistoryRecord): void {
     let history: string | null = this.get(key);
     if (history === null) {
       localStorage.setItem(key, JSON.stringify(new Array(record)));
     } else {
       let historyAsArray = JSON.parse(history);
-      historyAsArray.push(record);
+      historyAsArray.unshift(record);
       localStorage.setItem(key, JSON.stringify(historyAsArray));
     }
   }
@@ -22,7 +23,7 @@ export class StorageService {
     return localStorage.getItem(key);
   }
 
-  getHistory(): Array<any> {
+  getHistory(): Array<HistoryRecord> {
     let history: string | null = this.get(key);
     if (history === null) {
       return [];

@@ -7,6 +7,7 @@ import { TimerService } from '../service/timer/timer.service';
 import { OverlayService } from '../service/overlay/overlay.service';
 import { StorageService } from '../service/storage/storage.service';
 import { HistoryComponent } from "../history/history.component";
+import { BoardInput, GameMode, HistoryRecord, NotificationStatus } from '../utils/types';
 
 @Component({
   selector: 'game',
@@ -27,11 +28,11 @@ export class GameComponent implements AfterViewInit {
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
   @ViewChild('overlay') overlay!: HTMLElement;
 
-  mode: string = 'Beginner';
+  mode: GameMode = GameMode.BEGINNER;
   displayInputs: boolean = false;
   settingsClicked: boolean = false;
   
-  input: {row: number, column: number, mine: number} = { row: 1, column: 1, mine: 1 };
+  input: BoardInput = { row: 1, column: 1, mine: 1 };
   maxMines: number = 0;
 
   constructor(
@@ -46,7 +47,9 @@ export class GameComponent implements AfterViewInit {
   }
 
   startNewGame(rows?: number, columns?: number, mines?: number, mode?: string) {
-    if (mode) { this.mode = mode; }
+    if (mode) {
+      this.mode = mode as GameMode;
+    }
     if (rows !== undefined && columns !== undefined && mines !== undefined) {
       this.minesweeper.rowsNumber = rows;
       this.minesweeper.columnsNumber = columns;
@@ -58,22 +61,17 @@ export class GameComponent implements AfterViewInit {
     this.conffetiService.stopConfettis(true);
   }
 
-  updateGameStatus(event: {status: string, flagged: number, time: number}) {
+  updateGameStatus(event: NotificationStatus) {
     if (event.status === 'WON' || event.status === 'GAMEOVER') {
-      
-      // TODO clean
-      let ev: any = event;
-      ev.mode = this.mode;
-      ev.date = new Date();
-
-      if (this.mode === 'Custom') {
-        ev.input = this.input;
+      let record: HistoryRecord = {
+        ...event,
+        mode: this.mode,
+        date: new Date()
+      };
+      if (this.mode === GameMode.CUSTOM) {
+        record.input = this.input;
       }
-      
-      console.log(event);
-
-      this.storageService.insert(event);
-
+      this.storageService.insert(record);
       if (event.status === 'WON') {
         this.conffetiService.stopConfettis(false);
         this.conffetiService.triggerConfettis();
@@ -87,13 +85,11 @@ export class GameComponent implements AfterViewInit {
   }
 
   customGame() {
-    this.mode = "Custom";
+    this.mode = GameMode.CUSTOM;
     if (!this.displayInputs) {
       this.displayInputs = true;
     }
-    this.input.row = 3;
-    this.input.column = 3;
-    this.input.mine = 1;
+    this.input = { row: 3, column: 3, mine: 1 };
     this.updateBoard();
   }
 

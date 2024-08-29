@@ -1,19 +1,20 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TimerService {
-
   public timerEmitter = new EventEmitter<number>();
   counter: number = 0;
   private running: boolean = false;
   private timerRef: any;
 
-  constructor() { }
+  constructor() {}
 
   start() {
-    if (this.running) { return; }
+    if (this.running) {
+      return;
+    }
     this.running = true;
     const emitAndSchedule = () => {
       this.timerEmitter.emit(this.counter++);

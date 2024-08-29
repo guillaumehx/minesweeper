@@ -18,8 +18,7 @@ export class Tile {
     this.neighbors = [];
   }
 
-  getThreatCount():number {
-    return this.neighbors.filter(tile => tile.isMine).length;
+  getThreatCount(): number {
+    return this.neighbors.filter((tile) => tile.isMine).length;
   }
-
 }

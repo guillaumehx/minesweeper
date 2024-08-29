@@ -1,17 +1,14 @@
-import {Component, Input} from '@angular/core';
-import {NgIf} from "@angular/common";
-import {Tile} from "./tile";
+import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Tile } from './tile';
 
 @Component({
   selector: 'tile',
   standalone: true,
-  imports: [
-    NgIf
-  ],
+  imports: [NgIf],
   templateUrl: './tile.component.html',
-  styleUrl: './tile.component.css'
+  styleUrl: './tile.component.css',
 })
 export class TileComponent {
   @Input() tile!: Tile;
-
 }

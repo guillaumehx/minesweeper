@@ -1,19 +1,65 @@
 <div style="text-align: center" #content>
-  <br>
-  <img class="animate__animated animate__rubberBand" src="../../assets/images/logo.png">
-  <br>
-  <br>
+  <br />
+  <img
+    class="animate__animated animate__rubberBand"
+    src="../../assets/images/logo.png"
+  />
+  <br />
+  <br />
   <table>
     <tr>
-      <td><span class="button" (click)="startNewGame(10, 10, 18); displayInputs = false">Beginner</span></td>
-      <td><span class="button" (click)="startNewGame(16, 16, 48); displayInputs = false">Intermediate</span></td>
-      <td><span class="button" (click)="startNewGame(16, 24, 72); displayInputs = false">Expert</span></td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(10, 10, 18); displayInputs = false"
+          >Beginner</span
+        >
+      </td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(16, 16, 48); displayInputs = false"
+          >Intermediate</span
+        >
+      </td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(16, 24, 72); displayInputs = false"
+          >Expert</span
+        >
+      </td>
       <td><span class="button" (click)="customGame()">Custom</span></td>
     </tr>
     <tr *ngIf="displayInputs">
-      <td><b>Rows: </b><input type="number" min="3" [(ngModel)]="input.row" (input)="updateBoard()"></td>
-      <td><b>Columns: </b><input type="number" min="3" [(ngModel)]="input.column" (input)="updateBoard()"></td>
-      <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="input.mine" [max]="maxMines" (input)="updateBoard()"></td>
+      <td>
+        <b>Rows: </b
+        ><input
+          type="number"
+          min="3"
+          [(ngModel)]="input.row"
+          (input)="updateBoard()"
+        />
+      </td>
+      <td>
+        <b>Columns: </b
+        ><input
+          type="number"
+          min="3"
+          [(ngModel)]="input.column"
+          (input)="updateBoard()"
+        />
+      </td>
+      <td>
+        <b>Mines: </b
+        ><input
+          type="number"
+          min="1"
+          [(ngModel)]="input.mine"
+          [max]="maxMines"
+          (input)="updateBoard()"
+        />
+      </td>
     </tr>
   </table>
   <classical-board
@@ -22,6 +68,6 @@
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     (restartGameEvent)="startNewGame()"
-    #minesweeper></classical-board>
+    #minesweeper
+  ></classical-board>
 </div>
-

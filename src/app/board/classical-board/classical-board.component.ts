@@ -7,6 +7,7 @@ import { ClassicalBoard } from './classical-board';
 import { GenerationStrategy } from '../../utils/types';
 import { TimerService } from '../../service/timer/timer.service';
 
+
 @Component({
   selector: 'classical-board',
   standalone: true,

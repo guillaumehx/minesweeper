@@ -1,27 +1,27 @@
-@import 'animate.css/animate.min.css';
+@import "animate.css/animate.min.css";
 
 @font-face {
-  font-family: 'Digital';
-  src: URL('./assets/fonts/digital-7.ttf') format('truetype');
+  font-family: "Digital";
+  src: URL("./assets/fonts/digital-7.ttf") format("truetype");
 }
 
 body {
-  background: #E0E2E4 no-repeat 23px 30px;
+  background: #e0e2e4 no-repeat 23px 30px;
   background-size: 380px;
   font-family: sans-serif;
 }
 
-a:hover{
+a:hover {
   cursor: pointer;
 }
 
-ul.actions{
+ul.actions {
   list-style: none;
   margin: 0 20px;
   padding: 0 0 20px;
 }
 
-ul.actions li{
+ul.actions li {
   display: inline-block;
 }
 
@@ -34,17 +34,17 @@ ul.actions li{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   cursor: pointer;
 }
 
-#text{
+#text {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 .shake {
@@ -53,15 +53,37 @@ ul.actions li{
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }

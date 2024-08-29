@@ -48,9 +48,6 @@
   "lint-staged": {
     "src/**/*.{html,ts,css}": [
       "prettier --write"
-    ],
-    "src/**/*.ts": [
-      ""
     ]
   },
   "husky": {

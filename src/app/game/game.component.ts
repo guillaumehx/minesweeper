@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { ClassicalBoardComponent } from "../board/classical-board/classical-board.component";
-import { DatePipe, NgIf } from "@angular/common";
+import { ClassicalBoardComponent } from '../board/classical-board/classical-board.component';
+import { DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
 import { TimerService } from '../service/timer/timer.service';
@@ -8,32 +8,30 @@ import { TimerService } from '../service/timer/timer.service';
 @Component({
   selector: 'game',
   standalone: true,
-  imports: [
-    ClassicalBoardComponent,
-    NgIf,
-    DatePipe,
-    FormsModule
-  ],
+  imports: [ClassicalBoardComponent, NgIf, DatePipe, FormsModule],
   templateUrl: './game.component.html',
-  styleUrl: './game.component.css'
+  styleUrl: './game.component.css',
 })
 export class GameComponent {
-
-  result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
+  result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER';
   // This field is required for the shaking animation
   @ViewChild('content') content!: HTMLElement;
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
   playingTime: number = 0;
   displayInputs: boolean = false;
-  
-  input: {row: number, column: number, mine: number} = { row: 1, column: 1, mine: 1 };
+
+  input: { row: number; column: number; mine: number } = {
+    row: 1,
+    column: 1,
+    mine: 1,
+  };
   maxMines: number = 0;
 
   constructor(
     private conffetiService: ConfettiService,
-    private timerService: TimerService
-  ) { }
+    private timerService: TimerService,
+  ) {}
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
     if (rows !== undefined && columns !== undefined && mines !== undefined) {

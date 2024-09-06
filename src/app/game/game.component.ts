@@ -4,10 +4,10 @@ import { NgIf } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
 import { TimerService } from '../service/timer/timer.service';
-import { OverlayService } from '../service/overlay/overlay.service';
 import { StorageService } from '../service/storage/storage.service';
 import { HistoryComponent } from "../history/history.component";
-import { BoardInput, GameMode, HistoryRecord, NotificationStatus } from '../utils/types';
+import { BoardInput, GameMode, HistoryRecord, NotificationStatus, OverlayContent, OverlayData } from '../utils/types';
+import { OverlayComponent } from "../overlay/overlay.component";
 
 @Component({
   selector: 'game',
@@ -16,35 +16,29 @@ import { BoardInput, GameMode, HistoryRecord, NotificationStatus } from '../util
     ClassicalBoardComponent,
     HistoryComponent,
     NgIf,
-    FormsModule
+    FormsModule,
+    OverlayComponent
 ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })
-export class GameComponent implements AfterViewInit {
+export class GameComponent {
 
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
-  @ViewChild('content') content!: HTMLElement;
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
-  @ViewChild('overlay') overlay!: HTMLElement;
 
   mode: GameMode = GameMode.BEGINNER;
-  displayInputs: boolean = false;
-  settingsClicked: boolean = false;
-  
-  input: BoardInput = { row: 1, column: 1, mine: 1 };
+  displayInputs: boolean = false;  
   maxMines: number = 0;
+
+  input: BoardInput = { row: 1, column: 1, mine: 1 };
+  overlayData: OverlayData = { display: false, content: OverlayContent.HISTORY};
 
   constructor(
     private conffetiService: ConfettiService,
     private timerService: TimerService,
-    private overlayService: OverlayService,
     private storageService: StorageService
   ) { }
-
-  ngAfterViewInit(): void {
-    this.overlayService.overlay = this.overlay;
-  }
 
   startNewGame(rows?: number, columns?: number, mines?: number, mode?: string) {
     if (mode) {
@@ -76,6 +70,9 @@ export class GameComponent implements AfterViewInit {
         this.conffetiService.stopConfettis(false);
         this.conffetiService.triggerConfettis();
       }
+      if (event.status === 'GAMEOVER') {
+        this.overlayData = { display: true, content: OverlayContent.EXPLOSION };
+      }
       this.timerService.stop();
       this.result = event.status;
     } else if (event.status === 'ONGOING') {
@@ -99,10 +96,7 @@ export class GameComponent implements AfterViewInit {
   }
 
   settings() {
-    this.settingsClicked = !this.settingsClicked;
-    if (this.displayInputs) {
-      this.displayInputs = false;
-    }
+    this.overlayData = { display: true, content: OverlayContent.HISTORY };
   }
 
 }

@@ -24,3 +24,13 @@ export interface BoardInput {
     column: number;
     mine: number;
 }
+
+export interface OverlayData {
+    display: boolean;
+    content: OverlayContent;
+}
+
+export enum OverlayContent {
+    EXPLOSION = 1,
+    HISTORY = 2
+}

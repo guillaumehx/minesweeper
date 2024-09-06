@@ -4,19 +4,19 @@ import { ClassicalBoard } from "../../board/classical-board/classical-board";
 import { GenerationStrategy } from "../../utils/types";
 import { Util } from "../../utils/util";
 import { TileService } from '../tile/tile.service';
-import { OverlayService } from '../overlay/overlay.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassicalBoardService {
+
   private tileService: TileService;
 
-  constructor(tileService: TileService, private overlayService: OverlayService) {
+  constructor(tileService: TileService) {
     this.tileService = tileService;
   }
 
-  revealTile(board : ClassicalBoard, tile:Tile):void {
+  revealTile(board: ClassicalBoard, tile: Tile):void {
     if (tile?.isRevealed) {
       let surroundingMines = tile.getThreatCount();
       let flaggedMines = tile.neighbors.filter(n => n.isFlagged).length;
@@ -29,7 +29,6 @@ export class ClassicalBoardService {
     if (tile?.isMine) {
       this.tileService.reveal(tile);
       this.setGameOver(board);
-      this.overlayService.on();
     } else {
       this.tileService.reveal(tile);
       this.checkVictory(board);
@@ -120,6 +119,5 @@ export class ClassicalBoardService {
 
     return;
   }
-
 
 }

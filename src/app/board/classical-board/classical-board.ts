@@ -7,7 +7,6 @@ export class ClassicalBoard extends Board {
   numberOfMinesLeft:number;
   numberOfUnRevealedTiles:number=0;
 
-
   constructor(id: number, numberOfMinesLeft:number) {
     super(id);
     this.tiles = [];

@@ -1,13 +1,21 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ClassicalBoardComponent } from "../board/classical-board/classical-board.component";
-import { NgIf } from "@angular/common";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ClassicalBoardComponent } from '../board/classical-board/classical-board.component';
+import { DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
 import { TimerService } from '../service/timer/timer.service';
+import tippy from 'tippy.js';
 import { StorageService } from '../service/storage/storage.service';
-import { HistoryComponent } from "../history/history.component";
-import { BoardInput, GameMode, HistoryRecord, NotificationStatus, OverlayContent, OverlayData } from '../utils/types';
-import { OverlayComponent } from "../overlay/overlay.component";
+import { HistoryComponent } from '../history/history.component';
+import {
+  BoardInput,
+  GameMode,
+  HistoryRecord,
+  NotificationStatus,
+  OverlayContent,
+  OverlayData,
+} from '../utils/types';
+import { OverlayComponent } from '../overlay/overlay.component';
 
 @Component({
   selector: 'game',
@@ -17,28 +25,38 @@ import { OverlayComponent } from "../overlay/overlay.component";
     HistoryComponent,
     NgIf,
     FormsModule,
-    OverlayComponent
-],
+    DatePipe,
+    FormsModule,
+    OverlayComponent,
+  ],
   templateUrl: './game.component.html',
-  styleUrl: './game.component.css'
+  styleUrl: './game.component.css',
 })
-export class GameComponent {
-
-  result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER'
+export class GameComponent implements OnInit {
+  result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER';
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
   mode: GameMode = GameMode.BEGINNER;
-  displayInputs: boolean = false;  
+  displayInputs: boolean = false;
   maxMines: number = 0;
-
+  playingTime: number = 0;
   input: BoardInput = { row: 1, column: 1, mine: 1 };
-  overlayData: OverlayData = { display: false, content: OverlayContent.HISTORY};
+  overlayData: OverlayData = {
+    display: false,
+    content: OverlayContent.HISTORY,
+  };
 
   constructor(
     private conffetiService: ConfettiService,
     private timerService: TimerService,
-    private storageService: StorageService
-  ) { }
+    private storageService: StorageService,
+  ) {}
+
+  ngOnInit(): void {
+    tippy('[data-tippy-content]', {
+      placement: 'bottom',
+    });
+  }
 
   startNewGame(rows?: number, columns?: number, mines?: number, mode?: string) {
     if (mode) {
@@ -60,7 +78,7 @@ export class GameComponent {
       let record: HistoryRecord = {
         ...event,
         mode: this.mode,
-        date: new Date()
+        date: new Date(),
       };
       if (this.mode === GameMode.CUSTOM) {
         record.input = this.input;
@@ -98,5 +116,4 @@ export class GameComponent {
   settings() {
     this.overlayData = { display: true, content: OverlayContent.HISTORY };
   }
-
 }

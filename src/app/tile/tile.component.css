@@ -19,46 +19,36 @@
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 2px outset #A3A7AE;
-  background-image:
-    radial-gradient(
-      circle at top left,
-      #E0E2E4,
-      #A3A7AE
-    );
-  transition: transform .3s;
+  border: 2px outset #a3a7ae;
+  background-image: radial-gradient(circle at top left, #e0e2e4, #a3a7ae);
+  transition: transform 0.3s;
 }
 
 .lid:hover {
-  background-image:
-    radial-gradient(
-      circle at bottom right,
-      #E0E2E4,
-      #A3A7AE
-    );
+  background-image: radial-gradient(circle at bottom right, #e0e2e4, #a3a7ae);
   transform: scale(0.9);
 }
 
 .mine {
-  background-image: url('../../assets/images/mine.png');
+  background-image: url("../../assets/images/mine.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .flagged:not(.revealed) {
-  background: url('../../assets/images/flag.png');
-  background-size:24px;
-  background-repeat:no-repeat;
-  background-position:center;
+  background: url("../../assets/images/flag.png");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .flagged.revealed.mine {
-  background: url('../../assets/images/flag-good.png');
-  background-size:24px;
-  background-repeat:no-repeat;
-  background-position:center;
+  background: url("../../assets/images/flag-good.png");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .flagged.revealed:not(.mine) {
-  background: radial-gradient(red 0, 65%, #B4B7BD);
+  background: radial-gradient(red 0, 65%, #b4b7bd);
 }

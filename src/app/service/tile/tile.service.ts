@@ -3,11 +3,10 @@ import { Tile } from '../../tile/tile';
 import { Util } from '../../utils/util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TileService {
-
-  constructor() { }
+  constructor() {}
 
   reveal(tile: Tile) {
     if (tile.isFlagged) return;
@@ -24,15 +23,15 @@ export class TileService {
     }
   }
 
-  generateTiles(tilesNumber:number):Tile[] {
+  generateTiles(tilesNumber: number): Tile[] {
     let tiles: Tile[] = [];
-    for (let i = 0; i< tilesNumber; i++) {
+    for (let i = 0; i < tilesNumber; i++) {
       tiles.push(new Tile(i, false));
     }
     return tiles;
   }
 
-  assignMines(tiles: Tile[], minesNumber:number):Tile[] {
+  assignMines(tiles: Tile[], minesNumber: number): Tile[] {
     let tilesNumber = tiles.length;
     minesNumber = Math.min(tilesNumber, minesNumber);
     while (minesNumber > 0) {
@@ -44,6 +43,4 @@ export class TileService {
     }
     return tiles;
   }
-
 }
-

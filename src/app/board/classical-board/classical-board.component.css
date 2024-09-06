@@ -6,7 +6,7 @@
 .board {
   border: 2px solid #606368;
   margin: 20px auto;
-  background: #B4B7BD;
+  background: #b4b7bd;
 }
 
 .row {
@@ -28,26 +28,26 @@
 }
 
 .axo-button-play {
-  background: url('../../../assets/images/axo-play.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
+  background: url("../../../assets/images/axo-play.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 
 .axo-button-won {
-  background: url('../../../assets/images/axo-won.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
+  background: url("../../../assets/images/axo-won.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 
 .axo-button-lost {
-  background: url('../../../assets/images/axo-lost.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
+  background: url("../../../assets/images/axo-lost.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 

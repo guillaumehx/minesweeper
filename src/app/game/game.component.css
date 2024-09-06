@@ -1,5 +1,5 @@
 .time {
-  background: #A3A7AE;
+  background: #a3a7ae;
   display: inline-block;
   padding: 6px 10px;
 }
@@ -8,12 +8,14 @@
   visibility: hidden;
 }
 
-table, td, th {
+table,
+td,
+th {
   padding: 20px;
 }
 
 table {
-  width:auto;
+  width: auto;
   margin: auto;
   border-collapse: collapse;
 }
@@ -25,21 +27,11 @@ input {
 
 .button {
   padding: 16px;
-  background-image:
-    radial-gradient(
-      circle at top left,
-      #E0E2E4,
-      #A3A7AE
-    );
+  background-image: radial-gradient(circle at top left, #e0e2e4, #a3a7ae);
   cursor: pointer;
   border: 2px solid #606368;
 }
 
 .button:hover {
-  background-image:
-  radial-gradient(
-    circle at bottom right,
-    #E0E2E4,
-    #A3A7AE
-  );
+  background-image: radial-gradient(circle at bottom right, #e0e2e4, #a3a7ae);
 }

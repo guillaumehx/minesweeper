@@ -2,11 +2,20 @@
   <div class="board">
     <div class="banner">
       <div class="box right">{{ minesNumber - flagsNumber }}</div>
-      <div class="box" [class]="'axo-button-'+getGameStatus()" (click)="restartGame()"></div>
+      <div
+        class="box"
+        [class]="'axo-button-' + getGameStatus()"
+        (click)="restartGame()"
+      ></div>
       <div class="box left">{{ (timerService.timerEmitter | async) || 0 }}</div>
     </div>
     <div *ngFor="let row of tiles" class="row">
-      <tile *ngFor="let tile of row" [tile]="tile" (click)="handleTileClick(tile)" (contextmenu)="onRightClick(tile)"></tile>
+      <tile
+        *ngFor="let tile of row"
+        [tile]="tile"
+        (click)="handleTileClick(tile)"
+        (contextmenu)="onRightClick(tile)"
+      ></tile>
     </div>
   </div>
 </div>

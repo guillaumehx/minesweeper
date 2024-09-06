@@ -1,19 +1,75 @@
 <div style="text-align: center" #content>
-  <br>
-  <img class="animate__animated animate__rubberBand" src="../../assets/images/logo.png">
-  <br>
-  <br>
+  <br />
+  <img
+    class="animate__animated animate__rubberBand"
+    src="../../assets/images/logo.png"
+  />
+  <br />
+  <br />
   <table>
     <tr>
-      <td><span class="button" (click)="startNewGame(10, 10, 18, 'Beginner'); displayInputs = false">Beginner</span></td>
-      <td><span class="button" (click)="startNewGame(16, 16, 48, 'Intermediate'); displayInputs = false">Intermediate</span></td>
-      <td><span class="button" (click)="startNewGame(16, 24, 72, 'Expert'); displayInputs = false">Expert</span></td>
-      <td><span class="button" (click)="customGame()">Custom</span></td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(10, 10, 18); displayInputs = false"
+          data-tippy-content="A good place to start !"
+          >Beginner</span
+        >
+      </td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(16, 16, 48); displayInputs = false"
+          data-tippy-content="A bit more challenging !"
+          >Intermediate</span
+        >
+      </td>
+      <td>
+        <span
+          class="button"
+          (click)="startNewGame(16, 24, 72); displayInputs = false"
+          data-tippy-content="For the tryharders !"
+          >Expert</span
+        >
+      </td>
+      <td>
+        <span
+          class="button"
+          (click)="customGame()"
+          data-tippy-content="Set your own rules !"
+          >Custom</span
+        >
+      </td>
     </tr>
     <tr *ngIf="displayInputs">
-      <td><b>Rows: </b><input type="number" min="3" [(ngModel)]="input.row" (input)="updateBoard()"></td>
-      <td><b>Columns: </b><input type="number" min="3" [(ngModel)]="input.column" (input)="updateBoard()"></td>
-      <td><b>Mines: </b><input type="number" min="1" [(ngModel)]="input.mine" [max]="maxMines" (input)="updateBoard()"></td>
+      <td>
+        <b>Rows: </b
+        ><input
+          type="number"
+          min="3"
+          [(ngModel)]="input.row"
+          (input)="updateBoard()"
+        />
+      </td>
+      <td>
+        <b>Columns: </b
+        ><input
+          type="number"
+          min="3"
+          [(ngModel)]="input.column"
+          (input)="updateBoard()"
+        />
+      </td>
+      <td>
+        <b>Mines: </b
+        ><input
+          type="number"
+          min="1"
+          [(ngModel)]="input.mine"
+          [max]="maxMines"
+          (input)="updateBoard()"
+        />
+      </td>
     </tr>
   </table>
 
@@ -23,12 +79,18 @@
     [minesNumber]="18"
     (notifyGameStatus)="updateGameStatus($event)"
     (restartGameEvent)="startNewGame()"
-    #minesweeper></classical-board>
+    #minesweeper
+  ></classical-board>
 
   <overlay [overlayData]="overlayData"></overlay>
 
-  <span style="height:30px; margin:auto;">
-      <img src="../../assets/images/settings.png" width="30" height="30" (click)="settings()">
+  <span style="height: 30px; margin: auto">
+    <img
+      src="../../assets/images/settings.png"
+      width="30"
+      height="30"
+      (click)="settings()"
+      data-tippy-content="Game history"
+    />
   </span>
 </div>
-

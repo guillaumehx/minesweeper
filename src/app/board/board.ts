@@ -1,4 +1,4 @@
-import {Tile} from "../tile/tile";
+import { Tile } from '../tile/tile';
 
 export abstract class Board {
   // Id of the board
@@ -14,10 +14,10 @@ export abstract class Board {
     this.tileSet = [];
   }
   isGameOver(): boolean {
-    return  (this.status == 'GAMEOVER');
+    return this.status == 'GAMEOVER';
   }
 
   isWon(): boolean {
-    return  (this.status == 'WON');
+    return this.status == 'WON';
   }
 }

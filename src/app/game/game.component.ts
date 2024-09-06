@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClassicalBoardComponent } from '../board/classical-board/classical-board.component';
 import { DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
 import { TimerService } from '../service/timer/timer.service';
+import tippy from 'tippy.js';
 
 @Component({
   selector: 'game',
@@ -12,7 +13,7 @@ import { TimerService } from '../service/timer/timer.service';
   templateUrl: './game.component.html',
   styleUrl: './game.component.css',
 })
-export class GameComponent {
+export class GameComponent implements OnInit {
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER';
   // This field is required for the shaking animation
   @ViewChild('content') content!: HTMLElement;
@@ -32,6 +33,12 @@ export class GameComponent {
     private conffetiService: ConfettiService,
     private timerService: TimerService,
   ) {}
+
+  ngOnInit(): void {
+    tippy('[data-tippy-content]', {
+      placement: 'bottom',
+    });
+  }
 
   startNewGame(rows?: number, columns?: number, mines?: number) {
     if (rows !== undefined && columns !== undefined && mines !== undefined) {

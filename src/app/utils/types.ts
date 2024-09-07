@@ -27,7 +27,7 @@ export interface BoardInput {
 
 export interface OverlayData {
   display: boolean;
-  content: OverlayContent;
+  content?: OverlayContent;
 }
 
 export enum OverlayContent {

@@ -87,6 +87,7 @@ export class GameComponent implements OnInit {
       if (event.status === 'WON') {
         this.conffetiService.stopConfettis(false);
         this.conffetiService.triggerConfettis();
+        this.overlayData = { display: false };
       }
       if (event.status === 'GAMEOVER') {
         this.overlayData = { display: true, content: OverlayContent.EXPLOSION };

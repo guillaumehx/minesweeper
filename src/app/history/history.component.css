@@ -1,23 +1,29 @@
 .container {
-    height: 500px;
-    width: 700px;
-    overflow: auto;
-    margin: auto;
+  height: 500px;
+  width: 700px;
+  overflow: auto;
+  margin: auto;
 }
 
 table {
-    border: 2px solid #606368;
-    background-color: #C7CACE;
-    border-collapse: collapse;
-    text-align: center;
+  border: 2px solid #606368;
+  background-color: #c7cace;
+  border-collapse: collapse;
+  text-align: center;
 }
 
-th, td {
-    padding: 8px;
-    border-bottom: 1px solid #606368;
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid #606368;
 }
 
 .custom-th {
-    background-color: #B4B7BD;
+  background-color: #b4b7bd;
 }
-  
+
+.no-information {
+  background-color: #e0e2e4;
+  padding: 25px;
+  border-radius: 10px;
+}

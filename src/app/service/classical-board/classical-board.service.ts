@@ -4,7 +4,6 @@ import { ClassicalBoard } from '../../board/classical-board/classical-board';
 import { GenerationStrategy } from '../../utils/types';
 import { Util } from '../../utils/util';
 import { TileService } from '../tile/tile.service';
-import { OverlayService } from '../overlay/overlay.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +11,7 @@ import { OverlayService } from '../overlay/overlay.service';
 export class ClassicalBoardService {
   private tileService: TileService;
 
-  constructor(
-    tileService: TileService,
-    private overlayService: OverlayService,
-  ) {
+  constructor(tileService: TileService) {
     this.tileService = tileService;
   }
 
@@ -34,7 +30,6 @@ export class ClassicalBoardService {
     if (tile?.isMine) {
       this.tileService.reveal(tile);
       this.setGameOver(board);
-      this.overlayService.on();
     } else {
       this.tileService.reveal(tile);
       this.checkVictory(board);

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { OverlayService } from './overlay.service';
+import { StorageService } from './storage.service';
 
-describe('OverlayService', () => {
-  let service: OverlayService;
+describe('StorageService', () => {
+  let service: StorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(OverlayService);
+    service = TestBed.inject(StorageService);
   });
 
   it('should be created', () => {

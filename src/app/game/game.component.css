@@ -35,3 +35,9 @@ input {
 .button:hover {
   background-image: radial-gradient(circle at bottom right, #e0e2e4, #a3a7ae);
 }
+
+.settings {
+  height: 30px;
+  margin: auto;
+  cursor: pointer;
+}

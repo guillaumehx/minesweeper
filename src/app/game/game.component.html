@@ -72,6 +72,7 @@
       </td>
     </tr>
   </table>
+
   <classical-board
     [rowsNumber]="10"
     [columnsNumber]="10"
@@ -80,4 +81,16 @@
     (restartGameEvent)="startNewGame()"
     #minesweeper
   ></classical-board>
+
+  <overlay [overlayData]="overlayData"></overlay>
+
+  <span class="settings">
+    <img
+      src="../../assets/images/settings.png"
+      width="30"
+      height="30"
+      (click)="settings()"
+      data-tippy-content="Game history"
+    />
+  </span>
 </div>

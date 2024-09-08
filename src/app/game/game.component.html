@@ -12,7 +12,8 @@
         <span
           class="button"
           (click)="startNewGame(10, 10, 18); displayInputs = false"
-          data-tippy-content="A good place to start !"
+          tooltip="A good place to start !"
+          tooltip-position="bottom"
           >Beginner</span
         >
       </td>
@@ -20,7 +21,8 @@
         <span
           class="button"
           (click)="startNewGame(16, 16, 48); displayInputs = false"
-          data-tippy-content="A bit more challenging !"
+          tooltip="A bit more challenging !"
+          tooltip-position="bottom"
           >Intermediate</span
         >
       </td>
@@ -28,7 +30,8 @@
         <span
           class="button"
           (click)="startNewGame(16, 24, 72); displayInputs = false"
-          data-tippy-content="For the tryharders !"
+          tooltip="For the tryharders !"
+          tooltip-position="bottom"
           >Expert</span
         >
       </td>
@@ -36,7 +39,8 @@
         <span
           class="button"
           (click)="customGame()"
-          data-tippy-content="Set your own rules !"
+          tooltip="Set your own rules !"
+          tooltip-position="bottom"
           >Custom</span
         >
       </td>
@@ -84,13 +88,12 @@
 
   <overlay [overlayData]="overlayData"></overlay>
 
-  <span class="settings">
+  <span class="settings" tooltip="Game history" tooltip-position="bottom">
     <img
       src="../../assets/images/settings.png"
       width="30"
       height="30"
       (click)="settings()"
-      data-tippy-content="Game history"
     />
   </span>
 </div>

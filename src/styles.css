@@ -1,5 +1,5 @@
 @import "animate.css/animate.min.css";
-@import "tippy.js/dist/tippy.css";
+@import "./assets/tooltip.css";
 
 @font-face {
   font-family: "Digital";

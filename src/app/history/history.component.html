@@ -2,16 +2,16 @@
 <div *ngIf="history.length > 0; else elseBlock" class="container">
   <table>
     <tr class="custom-th">
-      <th>Status</th>
-      <th>Mode</th>
-      <th>Playing time</th>
-      <th>Flagged mines</th>
-      <th>Date</th>
+      <th>{{ "history.status" | transloco }}</th>
+      <th>{{ "history.mode" | transloco }}</th>
+      <th>{{ "history.time" | transloco }}</th>
+      <th>{{ "history.flagged" | transloco }}</th>
+      <th>{{ "history.date" | transloco }}</th>
     </tr>
     <tr *ngFor="let item of history">
-      <td>{{ item.status }}</td>
+      <td>{{ item.status | transloco }}</td>
       <td>
-        {{ item.mode }}
+        {{ item.mode | transloco }}
         <span *ngIf="item.mode === 'Custom'"
           >({{ item.input.row }}x{{ item.input.column }})</span
         >

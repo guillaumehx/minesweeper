@@ -1,0 +1,35 @@
+{
+    "beginner": {
+        "title": "Débutant",
+        "catchphrase": "Faut bien commencer quelque part !"
+    },
+    "intermediate": {
+        "title": "Intermédiaire",
+        "catchphrase": "Ça commence à chauffer !"
+    },
+    "expert": {
+        "title": "Expert",
+        "catchphrase": "Seulement pour les boss du game !"
+    },
+    "custom": {
+        "title": "Personnalisé",
+        "catchphrase": "Pourquoi suivre les règles quand tu peux les créer ?"
+    },
+    "rows": "Rangées",
+    "columns": "Colonnes",
+    "mines": "Mines",
+    "history": {
+        "title": "Historique de jeu",
+        "status": "Statut",
+        "mode": "Mode",
+        "time": "Temps de jeu",
+        "flagged": "Mines marquées",
+        "date": "Date"
+    },
+    "WON": "Gagné",
+    "GAMEOVER": "Perdu",
+    "Beginner": "Débutant",
+    "Intermediate": "Intermédiaire",
+    "Expert": "Expert",
+    "Custom": "Personnalisé"
+}

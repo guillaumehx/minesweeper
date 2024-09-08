@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ClassicalBoardComponent } from '../board/classical-board/classical-board.component';
 import { DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfettiService } from '../service/confetti/confetti.service';
 import { TimerService } from '../service/timer/timer.service';
-import tippy from 'tippy.js';
 import { StorageService } from '../service/storage/storage.service';
 import { HistoryComponent } from '../history/history.component';
 import {
@@ -32,7 +31,7 @@ import { OverlayComponent } from '../overlay/overlay.component';
   templateUrl: './game.component.html',
   styleUrl: './game.component.css',
 })
-export class GameComponent implements OnInit {
+export class GameComponent {
   result: undefined | 'ONGOING' | 'WON' | 'GAMEOVER';
   @ViewChild('minesweeper') minesweeper!: ClassicalBoardComponent;
 
@@ -51,12 +50,6 @@ export class GameComponent implements OnInit {
     private timerService: TimerService,
     private storageService: StorageService,
   ) {}
-
-  ngOnInit(): void {
-    tippy('[data-tippy-content]', {
-      placement: 'bottom',
-    });
-  }
 
   startNewGame(rows?: number, columns?: number, mines?: number, mode?: string) {
     if (mode) {

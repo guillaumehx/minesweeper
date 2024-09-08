@@ -24,7 +24,8 @@
         "mode": "Mode",
         "time": "Playing time",
         "flagged": "Flagged mines",
-        "date": "Date"
+        "date": "Date",
+        "empty": "No game history yet."
     },
     "WON": "Won",
     "GAMEOVER": "Game over",

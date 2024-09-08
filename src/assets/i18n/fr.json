@@ -24,7 +24,8 @@
         "mode": "Mode",
         "time": "Temps de jeu",
         "flagged": "Mines marquées",
-        "date": "Date"
+        "date": "Date",
+        "empty": "Pas encore d'historique de jeu."
     },
     "WON": "Gagné",
     "GAMEOVER": "Perdu",

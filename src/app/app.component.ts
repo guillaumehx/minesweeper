@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { GameComponent } from "./game/game.component";
+import { GameComponent } from './game/game.component';
+
 @Component({
-  selector: 'app-root',
+  selector: '<game></game>',
   standalone: true,
-  imports: [RouterOutlet, GameComponent],
-  templateUrl: './app.component.html'
+  imports: [GameComponent],
+  templateUrl: './app.component.html',
 })
-export class AppComponent { }
+export class AppComponent {}

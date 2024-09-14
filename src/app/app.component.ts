@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { GameComponent } from './game/game.component';
 
 @Component({
-  selector: '<game></game>',
+  selector: 'app-root',
   standalone: true,
   imports: [GameComponent],
-  templateUrl: './app.component.html',
+  template: '<game></game>',
 })
 export class AppComponent {}

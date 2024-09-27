@@ -1,0 +1,36 @@
+{
+    "beginner": {
+        "title": "Beginner",
+        "catchphrase": "A good place to start !"
+    },
+    "intermediate": {
+        "title": "Intermediate",
+        "catchphrase": "A bit more challenging !"
+    },
+    "expert": {
+        "title": "Expert",
+        "catchphrase": "For the tryharders !"
+    },
+    "custom": {
+        "title": "Custom",
+        "catchphrase": "Set your own rules !"
+    },
+    "rows": "Rows",
+    "columns": "Columns",
+    "mines": "Mines",
+    "history": {
+        "title": "Game history",
+        "status": "Status",
+        "mode": "Mode",
+        "time": "Playing time",
+        "flagged": "Flagged mines",
+        "date": "Date",
+        "empty": "No game history yet."
+    },
+    "WON": "Won",
+    "GAMEOVER": "Game over",
+    "Beginner": "Beginner",
+    "Intermediate": "Intermediate",
+    "Expert": "Expert",
+    "Custom": "Custom"
+}

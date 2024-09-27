@@ -15,6 +15,7 @@ import {
   OverlayData,
 } from '../utils/types';
 import { OverlayComponent } from '../overlay/overlay.component';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'game',
@@ -27,6 +28,7 @@ import { OverlayComponent } from '../overlay/overlay.component';
     DatePipe,
     FormsModule,
     OverlayComponent,
+    TranslocoPipe,
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css',
@@ -76,7 +78,7 @@ export class GameComponent {
       if (this.mode === GameMode.CUSTOM) {
         record.input = this.input;
       }
-      this.storageService.insert(record);
+      this.storageService.insertHistoryRecord(record);
       if (event.status === 'WON') {
         this.conffetiService.stopConfettis(false);
         this.conffetiService.triggerConfettis();

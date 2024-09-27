@@ -41,3 +41,22 @@ ul.actions li {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.language-buttons {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.language-buttons a {
+  text-decoration: none;
+  padding: 8px 8px;
+  color: #a7abb2;
+  font-weight: bold;
+}
+
+.language-buttons a:hover {
+  background-color: #a7abb2;
+  color: #e0e2e4;
+}

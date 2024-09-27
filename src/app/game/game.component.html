@@ -12,42 +12,42 @@
         <span
           class="button"
           (click)="startNewGame(10, 10, 18); displayInputs = false"
-          tooltip="A good place to start !"
+          [attr.tooltip]="'beginner.catchphrase' | transloco"
           tooltip-position="bottom"
-          >Beginner</span
+          >{{ "beginner.title" | transloco }}</span
         >
       </td>
       <td>
         <span
           class="button"
           (click)="startNewGame(16, 16, 48); displayInputs = false"
-          tooltip="A bit more challenging !"
+          [attr.tooltip]="'intermediate.catchphrase' | transloco"
           tooltip-position="bottom"
-          >Intermediate</span
+          >{{ "intermediate.title" | transloco }}</span
         >
       </td>
       <td>
         <span
           class="button"
           (click)="startNewGame(16, 24, 72); displayInputs = false"
-          tooltip="For the tryharders !"
+          [attr.tooltip]="'expert.catchphrase' | transloco"
           tooltip-position="bottom"
-          >Expert</span
+          >{{ "expert.title" | transloco }}</span
         >
       </td>
       <td>
         <span
           class="button"
           (click)="customGame()"
-          tooltip="Set your own rules !"
+          [attr.tooltip]="'custom.catchphrase' | transloco"
           tooltip-position="bottom"
-          >Custom</span
+          >{{ "custom.title" | transloco }}</span
         >
       </td>
     </tr>
     <tr *ngIf="displayInputs">
       <td>
-        <b>Rows: </b
+        <b>{{ "rows" | transloco }}: </b
         ><input
           type="number"
           min="3"
@@ -56,7 +56,7 @@
         />
       </td>
       <td>
-        <b>Columns: </b
+        <b>{{ "columns" | transloco }}: </b
         ><input
           type="number"
           min="3"
@@ -65,7 +65,7 @@
         />
       </td>
       <td>
-        <b>Mines: </b
+        <b>{{ "mines" | transloco }}: </b
         ><input
           type="number"
           min="1"
@@ -88,7 +88,11 @@
 
   <overlay [overlayData]="overlayData"></overlay>
 
-  <span class="settings" tooltip="Game history" tooltip-position="bottom">
+  <span
+    class="settings"
+    [attr.tooltip]="'history.title' | transloco"
+    tooltip-position="bottom"
+  >
     <img
       src="../../assets/images/settings.png"
       width="30"

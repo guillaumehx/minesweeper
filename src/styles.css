@@ -1,9 +1,10 @@
 @import "animate.css/animate.min.css";
-@import "./assets/tooltip.css";
+@import "https://gloubi-boulga.github.io/minesweeper/assets/tooltip.css";
 
 @font-face {
   font-family: "Digital";
-  src: URL("./assets/fonts/digital-7.ttf") format("truetype");
+  src: URL("https://gloubi-boulga.github.io/minesweeper/assets/fonts/digital-7.ttf")
+    format("truetype");
 }
 
 body {

@@ -30,20 +30,20 @@
 }
 
 .mine {
-  background-image: url("../../assets/images/mine.png");
+  background-image: url("https://gloubi-boulga.github.io/minesweeper/assets/images/mine.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .flagged:not(.revealed) {
-  background: url("../../assets/images/flag.png");
+  background: url("https://gloubi-boulga.github.io/minesweeper/assets/images/flag.png");
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .flagged.revealed.mine {
-  background: url("../../assets/images/flag-good.png");
+  background: url("https://gloubi-boulga.github.io/minesweeper/assets/images/flag-good.png");
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center;

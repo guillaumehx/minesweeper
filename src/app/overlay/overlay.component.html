@@ -1,12 +1,17 @@
-<div id="overlay" (click)="off()" [ngStyle]="{'display' : overlayData.display ? 'block' : 'none'}">
-    <div id="text">
-        @if (overlayData.content === overlayContent.HISTORY) {
-            <history></history>
-        }
-        @else {
-            <div class="shake">
-                <img src="../assets/images/explosion.gif" />
-            </div> 
-        }
-    </div>
+<div
+  id="overlay"
+  (click)="off()"
+  [ngStyle]="{ display: overlayData.display ? 'block' : 'none' }"
+>
+  <div id="text">
+    @if (overlayData.content === overlayContent.HISTORY) {
+      <history></history>
+    } @else {
+      <div class="shake">
+        <img
+          src="https://gloubi-boulga.github.io/minesweeper/assets/images/explosion.gif"
+        />
+      </div>
+    }
+  </div>
 </div>

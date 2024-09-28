@@ -1,1 +1,5 @@
 npx lint-staged
+ng build
+rm -rf ./docs/*
+mv ./dist/minesweeper-geektortoise/browser/* ./docs
+git add docs/*

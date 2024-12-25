@@ -8,7 +8,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 
   getTranslation(lang: string) {
     return this.http.get<Translation>(
-      `https://gloubi-boulga.github.io/minesweeper/assets/i18n/${lang}.json`,
+      `https://guillaumehx.github.io/minesweeper/assets/i18n/${lang}.json`,
     );
   }
 }
